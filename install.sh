@@ -7,6 +7,8 @@
 # - rofi code launcher
 # - add second theme
 # - dunst do-not-disturb and idle modes
+# - handling workspaces over multiple monitors
+# - cap output volume
 default_theme="matugen"
 
 root="$(realpath $(dirname $0))"
@@ -41,7 +43,7 @@ fi
 
 mkdir -p "$HOME/.config/waybar"
 echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
-echo -e "@import "~/.config/hypr/theme/waybar-colors.css";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
+echo -e "@import \"~/.config/hypr/theme/waybar-colors.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 
 # btop configs
 if [ -d "$HOME/.config/btop" ]; then
