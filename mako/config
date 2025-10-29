@@ -15,16 +15,21 @@ outer-margin=20
 
 icon-path=/var/lib/flatpak/exports/share/icons/hicolor
 
+# modes - idle
+[mode=idle]
+invisible=1
+
+# modes - do-not-disturb
 [mode=do-not-disturb]
-invisible=true
+invisible=1
 
 [mode=do-not-disturb app-name=notify-send]
-invisible=false
+invisible=1
 
 [urgency=critical]
 default-timeout=0
 
-# audio
+# apps - audio
 [app-name=audio]
 layer=overlay
 history=0
@@ -42,7 +47,7 @@ invisible=0
 # Force initial volume notification to be visible
 invisible=0
 
-# backlight
+# apps - backlight
 [app-name=backlight]
 layer=overlay
 history=0

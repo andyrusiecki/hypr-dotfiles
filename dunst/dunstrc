@@ -1,0 +1,72 @@
+[global]
+width = 420
+height = (0, 300)
+origin = top-right
+offset = (10, 10)
+
+# progress_bar_corner_radius = 5
+progress_bar_max_width = 420
+
+font = Hack Nerd Font 12
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = left
+vertical_alignment = center
+
+follow = mouse
+
+frame_width = 2
+
+show_age_threshold = 60
+
+idle_threshold = 5m
+show_indicators = yes
+
+icon_position = left
+#min_icon_size = 32
+max_icon_size = 64
+
+icon_theme = Adwaita
+enable_recursive_icon_lookup = true
+
+sticky_history = yes
+history_length = 20
+
+dmenu = /usr/bin/dmenu -p dunst:
+
+browser = /usr/bin/xdg-open
+
+always_run_script = true
+
+title = dunst
+class = dunst
+
+corner_radius = 0
+ignore_dbusclose = false
+
+mouse_left_click = do_action, close_current
+mouse_middle_click = context
+mouse_right_click = close_current
+
+[urgency_low]
+timeout = 10
+
+[urgency_normal]
+timeout = 10
+
+[urgency_critical]
+timeout = 0
+
+[spotify]
+appname = Spotify
+history_ignore = yes
+
+[audio]
+appname = audio
+history_ignore = yes
+set_stack_tag = "audio-notification"
+
+[backlight]
+appname = backlight
+history_ignore = yes
+set_stack_tag = "backlight-notification"

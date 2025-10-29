@@ -11,6 +11,10 @@ caching = true
 input_path = 'templates/btop.theme'
 output_path = '../themes/matugen/btop.theme'
 
+[templates.dunst]
+input_path = 'templates/dunst-theme.conf'
+output_path = '../themes/matugen/dunst-theme.conf'
+
 [templates.hyprland]
 input_path = 'templates/hyprland-colors.conf'
 output_path = '../themes/matugen/hyprland-colors.conf'

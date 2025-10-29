@@ -6,6 +6,7 @@
 #   - with wallpaper switcher?
 # - rofi code launcher
 # - add second theme
+# - dunst do-not-disturb and idle modes
 default_theme="matugen"
 
 root="$(realpath $(dirname $0))"
@@ -22,6 +23,9 @@ fi
 
 mkdir -p "$HOME/.config/hypr"
 echo -e "\$dotfiles = $root\nsource = \$dotfiles/hypr/hyprland.conf" > $HOME/.config/hypr/hyprland.conf
+
+# hypridle config (requires a symlink)
+ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
 
 # hyprsunset config (requires a symlink)
 ln -s $root/hypr/hyprsunset.conf $HOME/.config/hypr/hyprsunset.conf
@@ -47,6 +51,17 @@ fi
 
 mkdir -p "$HOME/.config/btop"
 ln -s $root/btop/btop.conf $HOME/.config/btop/btop.conf
+
+# dunst configs
+if [ -d "$HOME/.config/dunst" ]; then
+  echo "Backing up existing Dunst config to ~/.config/dunst.bak"
+  mv "$HOME/.config/dunst" "$HOME/.config/dunst.bak"
+fi
+
+mkdir -p "$HOME/.config/dunst"
+ln -s $root/dunst/dunstrc $HOME/.config/dunst/dunstrc
+mkdir -p "$HOME/.config/dunst/dunstrc.d"
+ln -s $HOME/.config/hypr/theme/dunst-theme.conf $HOME/.config/dunst/dunstrc.d/theme.conf
 
 # kitty configs
 if [ -d "$HOME/.config/kitty" ]; then
@@ -74,4 +89,4 @@ fi
 
 mkdir -p "$HOME/.config/yazi"
 ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
-ln -s ~/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml
+ln -s $HOME/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml

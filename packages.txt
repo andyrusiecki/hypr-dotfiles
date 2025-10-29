@@ -3,7 +3,7 @@ hyprland
 kitty
 xdg-desktop-portal-hyprland
 waybar
-mako
+dunst
 hyprpaper
 matugen-bin
 yazi

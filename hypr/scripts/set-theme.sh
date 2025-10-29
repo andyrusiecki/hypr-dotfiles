@@ -29,7 +29,7 @@ ln -s -f $themes_dir/$theme ~/.config/hypr/theme
 
 # reload/restart programs with new colors
 hyprctl reload
-makoctl reload
+dunstctl reload
 pkill -SIGUSR1 kitty
 pkill -SIGUSR2 waybar
 pkill -SIGUSR2 btop
