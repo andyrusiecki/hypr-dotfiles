@@ -7,9 +7,6 @@
   - with wallpaper switcher?
 - rofi code launcher
 - add standard themes
-- waybar memory module
-- waybar notifications module
-- waybar power profile module
 - handling workspaces over multiple monitors
 - cap output volume
 - hyprland binds cheat sheet

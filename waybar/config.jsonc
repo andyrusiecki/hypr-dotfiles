@@ -25,6 +25,7 @@
     "network",
     "cpu",
     "memory",
+    "custom/dunst",
     "power-profiles-daemon",
     "battery",
     //"custom/brightness",
@@ -155,6 +156,21 @@
     "on-click": "playerctl play-pause",
     "on-click-right": "notify-send 'TODO: Implement music right-click => focus player'",
     "max-length": 100
+  },
+  // Notifications (TODO: test)
+  "custom/dunst": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "format-icons": {
+      "paused": "",
+      "default": ""
+    },
+    "exec-if": "pgrep dunst",
+    "exec": "$DOTFILES_DIR/waybar/scripts/dunst-status.sh",
+    "on-click": "dunstctl set-paused toggle; pkill -SIGRTMIN+7 waybar",
+    "signal": 7,
+    "interval": 5,
+    "tooltip": false
   },
   // Exit
   "custom/exit": {
