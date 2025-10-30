@@ -1,14 +1,5 @@
 #!/bin/bash
 
-#TODO:
-# - rofi power menu
-# - rofi theme switcher
-#   - with wallpaper switcher?
-# - rofi code launcher
-# - add second theme
-# - dunst do-not-disturb and idle modes
-# - handling workspaces over multiple monitors
-# - cap output volume
 default_theme="matugen"
 
 root="$(realpath $(dirname $0))"
