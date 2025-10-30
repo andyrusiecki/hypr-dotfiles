@@ -1,0 +1,25 @@
+{
+  "special": {
+    "background": "#0c0d0e",
+    "foreground": "#fcfdfe",
+    "cursor": "#fcfdfe"
+  },
+  "colors": {
+    "color0": "#0c0d0e",
+    "color1": "#2e2f30",
+    "color2": "#515253",
+    "color3": "#737475",
+    "color4": "#959697",
+    "color5": "#b7b8b9",
+    "color6": "#dadbdc",
+    "color7": "#fcfdfe",
+    "color8": "#e31a1c",
+    "color9": "#e6550d",
+    "color10": "#dca060",
+    "color11": "#31a354",
+    "color12": "#80b1d3",
+    "color13": "#3182bd",
+    "color14": "#756bb1",
+    "color15": "#b15928"
+  }
+}

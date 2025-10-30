@@ -65,6 +65,14 @@ fi
 mkdir -p "$HOME/.config/kitty"
 ln -s $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
+# pywal configs
+if [ -d "$HOME/.config/wal" ]; then
+  echo "Backing up existing Pywal config to ~/.config/wal.bak"
+  mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
+fi
+
+ln -s $root/wal $HOME/.config/wal
+
 # yazi configs
 if [ -d "$HOME/.config/yazi" ]; then
   echo "Backing up existing Yazi config to ~/.config/yazi.bak"
