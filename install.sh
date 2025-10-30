@@ -65,15 +65,6 @@ fi
 mkdir -p "$HOME/.config/kitty"
 ln -s $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
-# mako configs
-if [ -d "$HOME/.config/mako" ]; then
-  echo "Backing up existing Mako config to ~/.config/mako.bak"
-  mv "$HOME/.config/mako" "$HOME/.config/mako.bak"
-fi
-
-mkdir -p "$HOME/.config/mako"
-echo "include=$root/mako/config" > $HOME/.config/mako/config
-
 # yazi configs
 if [ -d "$HOME/.config/yazi" ]; then
   echo "Backing up existing Yazi config to ~/.config/yazi.bak"

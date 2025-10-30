@@ -24,13 +24,9 @@ input_path = 'templates/hyprlock-colors.conf'
 output_path = '../themes/matugen/hyprlock-colors.conf'
 
 [templates.kitty]
-# still needs work: https://github.com/InioX/matugen-themes?tab=readme-ov-file#kitty
+# TODO:: still needs work - https://github.com/InioX/matugen-themes?tab=readme-ov-file#kitty
 input_path = 'templates/kitty-colors.conf'
 output_path = '../themes/matugen/kitty-colors.conf'
-
-[templates.mako]
-input_path = 'templates/mako-colors.ini'
-output_path = '../themes/matugen/mako-colors.ini'
 
 [templates.rofi]
 input_path = 'templates/rofi-colors.rasi'

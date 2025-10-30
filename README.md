@@ -11,6 +11,7 @@
 - cap output volume
 - hyprland binds cheat sheet
 - screenshots utility
+- waybar weather module
 
 ## Bugs
 - hypridle custom config location (requires v0.1.8 to be released)
