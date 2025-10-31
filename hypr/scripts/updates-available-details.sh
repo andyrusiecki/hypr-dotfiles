@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Arch:"
-arch_updates="$(checkupdates)"
+arch_updates="$(checkupdates --nocolor)"
 if ! [ "$arch_updates" == "" ]; then
   echo "$arch_updates" | awk '{print "- " $0}' | column -t
 

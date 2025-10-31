@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arch_updates=$(checkupdates | wc -l)
+arch_updates=$(checkupdates --nocolor | wc -l)
 aur_updates=$(pacman -Qm | aur vercmp | wc -l)
 flatpak_updates=$(flatpak remote-ls --updates | wc -l)
 
