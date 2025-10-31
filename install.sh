@@ -1,6 +1,6 @@
 #!/bin/bash
 
-default_theme="matugen"
+default_theme="base16-ondark"
 
 root="$(realpath $(dirname $0))"
 
@@ -22,9 +22,6 @@ ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
 
 # hyprsunset config (requires a symlink)
 ln -s $root/hypr/hyprsunset.conf $HOME/.config/hypr/hyprsunset.conf
-
-# set default theme
-ln -s $root/themes/$default_theme $HOME/.config/hypr/theme
 
 # waybar configs
 if [ -d "$HOME/.config/waybar" ]; then
@@ -82,3 +79,7 @@ fi
 mkdir -p "$HOME/.config/yazi"
 ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
 ln -s $HOME/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml
+
+# set default theme
+echo "Setting default theme to $default_theme"
+wal --theme $default_theme
