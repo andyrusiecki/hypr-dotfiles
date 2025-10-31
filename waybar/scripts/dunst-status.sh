@@ -7,8 +7,8 @@ if [ $paused == "true" ]; then
     alt="paused"
 
     if [ $waiting != 0 ]; then
-        text=$waiting
+        tooltip="Messages waiting: $waiting"
     fi
 fi
 
-echo "{\"alt\":\"$alt\",\"text\":\"$text\"}"
+echo "{\"alt\":\"$alt\",\"tooltip\":\"$tooltip\"}"

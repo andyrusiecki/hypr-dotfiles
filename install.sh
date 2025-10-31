@@ -34,7 +34,7 @@ fi
 
 mkdir -p "$HOME/.config/waybar"
 echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
-echo -e "@import \"~/.config/hypr/theme/waybar-colors.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
+echo -e "@import \"~/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 
 # btop configs
 if [ -d "$HOME/.config/btop" ]; then
@@ -54,7 +54,7 @@ fi
 mkdir -p "$HOME/.config/dunst"
 ln -s $root/dunst/dunstrc $HOME/.config/dunst/dunstrc
 mkdir -p "$HOME/.config/dunst/dunstrc.d"
-ln -s $HOME/.config/hypr/theme/dunst-theme.conf $HOME/.config/dunst/dunstrc.d/theme.conf
+ln -s $HOME/.cache/wal/colors-dunst.conf $HOME/.config/dunst/dunstrc.d/theme.conf
 
 # kitty configs
 if [ -d "$HOME/.config/kitty" ]; then

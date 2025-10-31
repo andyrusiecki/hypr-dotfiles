@@ -1,22 +1,11 @@
-@import "~/.config/hypr/theme/rofi-colors.rasi"
+@import "~/.cache/wal/colors-rofi-dark"
 
 configuration {
   show-icons: true;
 }
 
 * {
-    font:   "FiraCode Nerd Font Medium 12";
-
-    bg0:     @surface;
-    bg1:     @primary-container;
-    fg0:     @on-surface;
-
-    accent-color:     @primary;
-    urgent-color:     @error;
-
-    background-color:   transparent;
-    text-color:         @on-surface;
-
+    font:   "Hack Nerd Font Medium 12";
     margin:     0;
     padding:    0;
     spacing:    0;
@@ -25,29 +14,19 @@ configuration {
 window {
     location:   center;
     width:      480;
-
-    background-color:   @surface;
 }
 
 inputbar {
     spacing:    8px;
     padding:    8px;
-
-    text-color: @on-surface;
-    background-color:   @surface-container;
 }
 
 prompt, entry, element-icon, element-text {
     vertical-align: 0.5;
 }
 
-prompt {
-    text-color: @accent-color;
-}
-
 textbox {
     padding:            8px;
-    background-color:   @bg1;
 }
 
 listview {
@@ -63,42 +42,6 @@ element {
     spacing:    8px;
 }
 
-element normal normal, element alternative normal {
-    background-color: @primary-container;
-    text-color: @on-primary-container;
-}
-
-element normal urgent, element alternative urgent {
-    background-color:   @error;
-    text-color: @on-error;
-}
-
-element normal active {
-    text-color: @accent-color;
-}
-
-element alternate active {
-    text-color: @accent-color;
-}
-
-element selected {
-    text-color: @bg0;
-}
-
-element selected normal, element selected active {
-    background-color:   @primary;
-    text-color: @on-primary;
-}
-
-element selected urgent {
-    background-color:   @error;
-    text-color: @on-error;
-}
-
 element-icon {
     size:   0.8em;
-}
-
-element-text {
-    text-color: inherit;
 }

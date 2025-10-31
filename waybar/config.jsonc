@@ -159,18 +159,17 @@
   },
   // Notifications (TODO: test)
   "custom/dunst": {
-    "format": "{icon} {}",
+    "format": "{icon}",
     "return-type": "json",
     "format-icons": {
-      "paused": "",
-      "default": ""
+      "paused": " ",
+      "default": " "
     },
     "exec-if": "pgrep dunst",
     "exec": "$DOTFILES_DIR/waybar/scripts/dunst-status.sh",
     "on-click": "dunstctl set-paused toggle; pkill -SIGRTMIN+7 waybar",
     "signal": 7,
-    "interval": 5,
-    "tooltip": false
+    "interval": 5
   },
   // Exit
   "custom/exit": {

@@ -18,3 +18,4 @@ rofi
 polkit-gnome
 brightnessctl
 bc
+python-pywal16
