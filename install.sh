@@ -15,7 +15,7 @@ if [ -d "$HOME/.config/hypr" ]; then
 fi
 
 mkdir -p "$HOME/.config/hypr"
-echo -e "\$dotfiles = $root\n#\$wallpapers = ADD_WALLPAPER_DIR_HERE\n\nsource = \$dotfiles/hypr/hyprland.conf" > $HOME/.config/hypr/hyprland.conf
+echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf" > $HOME/.config/hypr/hyprland.conf
 
 # hypridle config (requires a symlink)
 ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
