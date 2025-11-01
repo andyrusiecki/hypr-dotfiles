@@ -3,14 +3,11 @@
 
 ## TODO
 - rofi power menu
-- rofi theme switcher
-  - with wallpaper switcher?
 - rofi code launcher
-- add standard themes
 - handling workspaces over multiple monitors
 - cap output volume
 - hyprland binds cheat sheet
-- screenshots utility
+- screenshots/screen recording utility
 - waybar weather module
 
 ## Bugs
