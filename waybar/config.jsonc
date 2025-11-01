@@ -91,7 +91,7 @@
     "interval": 1800,
     "signal": 8,
     "hide-empty-text": true,
-    "on-click": "uwsm app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/hypr/scripts/updates-run.sh\"; pkill -SIGRTMIN+8 waybar"
+    "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/hypr/scripts/updates-run.sh\"; pkill -SIGRTMIN+8 waybar"
   },
   // Hypridle
   "custom/hypridle": {
@@ -200,20 +200,20 @@
   "cpu": {
     "interval": 5,
     "format": "",
-    "on-click": "uwsm app -- kitty --class TUI.float btop"
+    "on-click": "uwsm-app -- kitty --class TUI.float btop"
   },
   // Memory (TODO: test)
   "memory": {
     "interval": 30,
     "format": "",
     "tooltip-format": "{used:0.1f}G/{total:0.1f}G ",
-    "on-click": "uwsm app -- kitty --class TUI.float btop"
+    "on-click": "uwsm-app -- kitty --class TUI.float btop"
   },
   // Pulseaudio
   "pulseaudio": {
     "scroll-step": 1,
     "format": "{icon} {volume}%",
-    "on-click": "uwsm app -- kitty --class TUI.float wiremix",
+    "on-click": "uwsm-app -- kitty --class TUI.float wiremix",
     "tooltip-format": "Playing at {volume}%",
     "format-muted": "",
     "format-icons": {
@@ -228,8 +228,8 @@
   "wireplumber": {
     "scroll-step": 1,
     "format": "{icon} {volume}%",
-    "on-click": "uwsm app -- kitty --class TUI.float wiremix",
-    "tooltip-format": "Output: {volume}% {node}\nInput: {source_volume}% {source_desc}",
+    "on-click": "uwsm-app -- kitty --class TUI.float wiremix",
+    "tooltip-format": "Output:\t{node_name}\t{volume}%\nInput:\t{source_desc}\t{source_volume}%",
     "format-muted": "",
     "format-icons": {
       "default": [
@@ -247,7 +247,7 @@
     "tooltip-format": "Devices connected: {num_connections}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "uwsm app -- kitty --class TUI.float bluetui"
+    "on-click": "uwsm-app -- kitty --class TUI.float bluetui"
   },
   // Battery
   "battery": {
@@ -320,7 +320,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "uwsm app -- kitty --class TUI.float impala"
+    "on-click": "uwsm-app -- kitty --class TUI.float impala"
   },
   // Tray
   "tray": {
