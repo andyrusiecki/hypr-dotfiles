@@ -18,3 +18,4 @@ polkit-gnome
 brightnessctl
 bc
 python-pywal16
+hyprdynamicmonitors-bin
