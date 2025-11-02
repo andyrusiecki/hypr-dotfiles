@@ -5,7 +5,6 @@
 - rofi power menu
 - handling workspaces over multiple monitors
 - cap output volume
-- hyprland binds cheat sheet
 - screenshots/screen recording utility
 - waybar weather module
 
