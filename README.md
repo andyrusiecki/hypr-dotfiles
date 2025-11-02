@@ -3,7 +3,6 @@
 
 ## TODO
 - rofi power menu
-- rofi code launcher
 - handling workspaces over multiple monitors
 - cap output volume
 - hyprland binds cheat sheet

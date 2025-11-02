@@ -1,6 +1,6 @@
 #!/bin/bash
 
-default_theme="base16-ondark"
+default_wallpaper="/usr/share/hypr/wall0.png"
 
 root="$(realpath $(dirname $0))"
 
@@ -80,6 +80,7 @@ mkdir -p "$HOME/.config/yazi"
 ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
 ln -s $HOME/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml
 
-# set default theme
-echo "Setting default theme to $default_theme"
-wal --theme $default_theme
+# set default wallpaper and color scheme
+echo "Setting default wallpaper to $default_wallpaper"
+echo "Generating color scheme with pywal"
+wal -i $default_wallpaper
