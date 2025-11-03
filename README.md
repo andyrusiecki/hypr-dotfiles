@@ -4,7 +4,6 @@
 ## TODO
 - rofi power menu
 - handling workspaces over multiple monitors
-- cap output volume
 - screenshots/screen recording utility
 - waybar weather module
 
