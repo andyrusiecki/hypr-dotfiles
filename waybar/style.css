@@ -93,6 +93,7 @@
     color: @foreground;
 }
 
+#privacy,
 #tray {
     border-radius: 1rem;
 }
@@ -100,10 +101,6 @@
 #custom-updates {
     border-radius: 1rem;
     color: @foreground;
-}
-
-#custom-hypridle.notactive {
-    color: rgb(224, 137, 137);
 }
 
 tooltip {

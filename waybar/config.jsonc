@@ -19,13 +19,13 @@
     "wireplumber",
     "clock",
     "tray",
-    "idle_inhibitor",
+    //"idle_inhibitor",
     "privacy",
     "bluetooth",
     "network",
     "cpu",
     "memory",
-    "custom/dunst",
+    //"custom/dunst",
     "power-profiles-daemon",
     "battery",
     //"custom/brightness",
@@ -119,11 +119,6 @@
     "modules": [
       {
         "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-out",
         "tooltip": true,
         "tooltip-icon-size": 24
       },
