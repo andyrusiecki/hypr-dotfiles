@@ -10,12 +10,12 @@ paru -S --needed - < $root/packages.txt
 
 # hyprland configs
 if [ -d "$HOME/.config/hypr" ]; then
-  echo "Backing up existing Hypr config to ~/.config/hypr.bak"
+  echo "Backing up existing Hypr config to $HOME/.config/hypr.bak"
   mv "$HOME/.config/hypr" "$HOME/.config/hypr.bak"
 fi
 
 mkdir -p "$HOME/.config/hypr"
-echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = \~/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
+echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = $HOME/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
 
 # add empty monitor config to avoid errors before running hyprdynamicmonitors
 touch $HOME/.config/hypr/monitors.conf
@@ -28,17 +28,17 @@ ln -s $root/hypr/hyprsunset.conf $HOME/.config/hypr/hyprsunset.conf
 
 # waybar configs
 if [ -d "$HOME/.config/waybar" ]; then
-  echo "Backing up existing Waybar config to ~/.config/waybar.bak"
+  echo "Backing up existing Waybar config to $HOME/.config/waybar.bak"
   mv "$HOME/.config/waybar" "$HOME/.config/waybar.bak"
 fi
 
 mkdir -p "$HOME/.config/waybar"
 echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
-echo -e "@import \"~/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
+echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 
 # btop configs
 if [ -d "$HOME/.config/btop" ]; then
-  echo "Backing up existing Btop config to ~/.config/btop.bak"
+  echo "Backing up existing Btop config to $HOME/.config/btop.bak"
   mv "$HOME/.config/btop" "$HOME/.config/btop.bak"
 fi
 
@@ -47,7 +47,7 @@ ln -s $root/btop/btop.conf $HOME/.config/btop/btop.conf
 
 # dunst configs
 if [ -d "$HOME/.config/dunst" ]; then
-  echo "Backing up existing Dunst config to ~/.config/dunst.bak"
+  echo "Backing up existing Dunst config to $HOME/.config/dunst.bak"
   mv "$HOME/.config/dunst" "$HOME/.config/dunst.bak"
 fi
 
@@ -58,7 +58,7 @@ ln -s $HOME/.cache/wal/colors-dunst.conf $HOME/.config/dunst/dunstrc.d/theme.con
 
 # kitty configs
 if [ -d "$HOME/.config/kitty" ]; then
-  echo "Backing up existing Kitty config to ~/.config/kitty.bak"
+  echo "Backing up existing Kitty config to $HOME/.config/kitty.bak"
   mv "$HOME/.config/kitty" "$HOME/.config/kitty.bak"
 fi
 
@@ -67,7 +67,7 @@ ln -s $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
 # pywal configs
 if [ -d "$HOME/.config/wal" ]; then
-  echo "Backing up existing Pywal config to ~/.config/wal.bak"
+  echo "Backing up existing Pywal config to $HOME/.config/wal.bak"
   mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
 fi
 
@@ -75,7 +75,7 @@ ln -s $root/wal $HOME/.config/wal
 
 # yazi configs
 if [ -d "$HOME/.config/yazi" ]; then
-  echo "Backing up existing Yazi config to ~/.config/yazi.bak"
+  echo "Backing up existing Yazi config to $HOME/.config/yazi.bak"
   mv "$HOME/.config/yazi" "$HOME/.config/yazi.bak"
 fi
 
