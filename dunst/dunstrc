@@ -23,8 +23,8 @@ idle_threshold = 5m
 show_indicators = yes
 
 icon_position = left
-#min_icon_size = 32
-max_icon_size = 64
+min_icon_size = 32
+max_icon_size = 32
 
 icon_theme = Adwaita
 enable_recursive_icon_lookup = true
@@ -57,10 +57,7 @@ timeout = 10
 [urgency_critical]
 timeout = 0
 
-[spotify]
-appname = Spotify
-history_ignore = yes
-
+# Custom notifications
 [audio]
 appname = audio
 history_ignore = yes
@@ -70,3 +67,4 @@ set_stack_tag = "audio-notification"
 appname = backlight
 history_ignore = yes
 set_stack_tag = "backlight-notification"
+
