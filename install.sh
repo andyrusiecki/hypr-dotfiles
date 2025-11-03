@@ -86,4 +86,4 @@ ln -s $HOME/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml
 # set default wallpaper and color scheme
 echo "Setting default wallpaper to $default_wallpaper"
 echo "Generating color scheme with pywal"
-wal -i $default_wallpaper
+wal -stne -i $default_wallpaper
