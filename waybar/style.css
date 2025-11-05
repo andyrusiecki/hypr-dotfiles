@@ -49,7 +49,8 @@
 #custom-dunst,
 #custom-hypridle,
 #custom-updates,
-#custom-exit {
+#custom-exit,
+#custom-screen-recording {
     color: @foreground;
     background-color: @background;
     padding: 0.5rem 1rem;
@@ -94,8 +95,14 @@
 }
 
 #privacy,
+#custom-screen-recording,
 #tray {
     border-radius: 1rem;
+}
+
+#privacy,
+#custom-screen-recording {
+    color: @color1;
 }
 
 #custom-updates {

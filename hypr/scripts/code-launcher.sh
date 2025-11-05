@@ -17,5 +17,5 @@ if [ -z "$result" ]; then
   exit 1
 fi
 
-uwsm-app -s a -- /usr/bin/code $dir/$result
+uwsm-app -- /usr/bin/code $dir/$result
 

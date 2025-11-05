@@ -62,9 +62,17 @@ timeout = 0
 appname = audio
 history_ignore = yes
 set_stack_tag = "audio-notification"
+override_pause_level = 100
 
 [backlight]
 appname = backlight
 history_ignore = yes
 set_stack_tag = "backlight-notification"
+override_pause_level = 100
+
+[do-not-disturb]
+appname = do-not-disturb
+history_ignore = yes
+set_stack_tag = "do-not-disturb-notification"
+override_pause_level = 100
 

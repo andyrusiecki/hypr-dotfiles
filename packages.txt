@@ -19,3 +19,7 @@ brightnessctl
 bc
 python-pywal16
 hyprdynamicmonitors-bin
+qt5-wayland
+qt6-wayland
+hyprshot
+gpu-screen-recorder

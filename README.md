@@ -4,7 +4,6 @@
 ## TODO
 - rofi power menu
 - handling workspaces over multiple monitors
-- screenshots/screen recording utility
 - waybar weather module
 - on install: copy nm-applet from autostart to hide in tray
 - on install: set gnome keyring as passstore for vscode
