@@ -9,7 +9,7 @@ progress_bar_max_width = 420
 
 font = Hack Nerd Font 12
 markup = full
-format = "<b>%s</b>\n%b"
+format = "<b>%s</b>\n\n%b"
 alignment = left
 vertical_alignment = center
 
@@ -22,12 +22,15 @@ show_age_threshold = 60
 idle_threshold = 5m
 show_indicators = yes
 
+vertical_alignment = top
 icon_position = left
 min_icon_size = 32
 max_icon_size = 32
 
-icon_theme = Adwaita,hicolor
-enable_recursive_icon_lookup = true
+icon_path = /usr/share/icons/Adwaita/scalable/devices:/usr/share/icons/Adwaita/scalable/mimetypes:/usr/share/icons/Adwaita/scalable/places/:/usr/share/icons/Adwaita/scalable/status:/usr/share/icons/hicolor/scalable/apps:/usr/share/pixmaps
+#icon_path = /usr/share/pixmaps
+#icon_theme = Adwaita,hicolor,pixmaps
+#enable_recursive_icon_lookup = true
 
 sticky_history = yes
 history_length = 20
@@ -47,6 +50,8 @@ ignore_dbusclose = false
 mouse_left_click = do_action, close_current
 mouse_middle_click = context
 mouse_right_click = close_current
+
+enable_posix_regex = true
 
 [urgency_low]
 timeout = 10
