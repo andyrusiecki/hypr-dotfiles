@@ -26,7 +26,7 @@ icon_position = left
 min_icon_size = 32
 max_icon_size = 32
 
-icon_theme = Adwaita
+icon_theme = Adwaita,hicolor
 enable_recursive_icon_lookup = true
 
 sticky_history = yes
