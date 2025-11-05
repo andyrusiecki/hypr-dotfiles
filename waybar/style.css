@@ -32,7 +32,7 @@
     border-radius: 1rem;
 }
 
-#custom-music,
+#custom-media,
 #tray,
 #bluetooth,
 #cpu,
@@ -70,7 +70,7 @@
     margin-left: 1rem;
 }
 
-#custom-music {
+#custom-media {
     color: @foreground;
     border-radius: 1rem;
 }

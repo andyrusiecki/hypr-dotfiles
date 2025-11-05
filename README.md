@@ -13,3 +13,5 @@
 - hyprsunset reset command on exit from fullscreen (requires v0.3.4 to be released)
 - dunst styling on non-primary display (Ex: title isn't bold)
 - waybar idle_inhibitor module not hidden when not active
+- hyprpaper wallpaper not applying on start-up
+- waybar media status script works great, but on-click action may not interact with correct player

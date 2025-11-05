@@ -12,7 +12,7 @@
   ],
   // Modules Center
   "modules-center": [
-    "custom/music"
+    "custom/media"
   ],
   // Modules Right
   "modules-right": [
@@ -145,8 +145,8 @@
     "signal": 3,
     "on-click": "pkill -SIGINT -f gpu-screen-recorder; pkill -SIGRTMIN+3 waybar"
   },
-  // Music
-  "custom/music": {
+  // Media
+  "custom/media": {
     "format": "{icon} {text}",
     "format-icons": {
       "default": " ",
@@ -160,10 +160,10 @@
     "interval": 1,
     "tooltip": false,
     "exec-if": "playerctl status >/dev/null 2>&1",
-    "exec": "$DOTFILES_DIR/waybar/scripts/music-status.sh",
+    "exec": "$DOTFILES_DIR/waybar/scripts/media-status.sh",
     "return-type": "json",
     "on-click": "playerctl play-pause",
-    "on-click-right": "notify-send 'TODO: Implement music right-click => focus player'",
+    "on-click-right": "notify-send 'TODO: Implement media right-click => focus player'",
     "max-length": 100
   },
   // Notifications (TODO: test)
