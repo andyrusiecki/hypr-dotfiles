@@ -151,6 +151,7 @@
     "format-icons": {
       "default": " ",
       "chrome": "󰊯 ",
+      "chromium": "󰊯 ",
       "firefox": " ",
       "spotify": " ",
       "twitch": " ",
@@ -158,12 +159,14 @@
     },
     "escape": true,
     "interval": 1,
-    "tooltip": false,
+    "tooltip": true,
     "exec-if": "playerctl status >/dev/null 2>&1",
     "exec": "$DOTFILES_DIR/waybar/scripts/media-status.sh",
     "return-type": "json",
     "on-click": "playerctl play-pause",
-    "on-click-right": "notify-send 'TODO: Implement media right-click => focus player'",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift",
+    "on-scroll-down": "playerctld shift",
     "max-length": 100
   },
   // Notifications (TODO: test)
