@@ -2,6 +2,9 @@
 
 configuration {
   show-icons: true;
+
+  ml-row-left: "Left";
+  ml-row-right: "Right";
 }
 
 * {
@@ -13,7 +16,7 @@ configuration {
 
 window {
     location:   center;
-    width:      480;
+    width:      900;
 }
 
 inputbar {
@@ -31,8 +34,8 @@ textbox {
 
 listview {
     padding:    4px 0;
-    lines:      8;
-    columns:    1;
+    lines:      4;
+    columns:    4;
 
     fixed-height:   false;
 }
@@ -43,9 +46,9 @@ element {
 }
 
 element-icon {
-    size:   0.8em;
+    size:   10em;
 }
 
-element-text.selected {
-    text-color: @background;
+element {
+   children: [ element-icon ];
 }
