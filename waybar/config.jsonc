@@ -166,8 +166,8 @@
     "return-type": "json",
     "on-click": "playerctl play-pause",
     "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
-    "on-scroll-up": "playerctld unshift",
-    "on-scroll-down": "playerctld shift",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar",
     "max-length": 100
   },
   // Notifications (TODO: test)
@@ -183,15 +183,6 @@
     "on-click": "$DOTFILES_DIR/hypr/scripts/toggle-dnd.sh; pkill -SIGRTMIN+2 waybar",
     "signal": 2,
     "interval": 5
-  },
-  "custom/weather": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "format-icons": {
-      "default": "W"
-    },
-    "exec": "$DOTFILES_DIR/waybar/scripts/weather-status.sh",
-    "interval": 1200
   },
   // Exit
   "custom/exit": {
@@ -355,5 +346,21 @@
   "tray": {
     "icon-size": 21,
     "spacing": 10
+  },
+  // Experimental Modules
+  "custom/weather": {
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "format-icons": {
+      "default": "W"
+    },
+    "exec": "$DOTFILES_DIR/waybar/scripts/weather-status.sh",
+    "interval": 1200
+  },
+  "image#album-art": {
+    "exec":"$DOTFILES_DIR/waybar/scripts/media-art.sh",
+    "size": 32,
+    "interval": 1,
+    "signal": 4,
   }
 }
