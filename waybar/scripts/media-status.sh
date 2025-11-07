@@ -29,6 +29,12 @@ jq -r -c '{
   "tooltip": "Track: " + .title + "\n" +
     "Artist: " + .artist + "\n" +
     "Album: " + .album + "\n" +
-    "Progress: " + .position + "/" + .length
+    "Progress: " + (
+      if (.length | length) > 10 then
+        "LIVE"
+      else
+        .position + "/" + .length
+      end
+    )
 }
 '
