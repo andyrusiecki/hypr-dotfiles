@@ -64,6 +64,7 @@
     "window-rewrite": {
       "class<code>": " ",
       "class<discord>": " ",
+      "class<discord> title<Discord Updater>": "",
       "class<firefox>": " ",
       "class<firefox> title<Picture-in-Picture>": "",
       "class<google-chrome>": "󰊯 ",
@@ -183,11 +184,27 @@
     "signal": 2,
     "interval": 5
   },
+  "custom/weather": {
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "format-icons": {
+      "default": "W"
+    },
+    "exec": "$DOTFILES_DIR/waybar/scripts/weather-status.sh",
+    "interval": 1200
+  },
   // Exit
   "custom/exit": {
     "format": "",
-    "tooltip-format": "Exit menu",
-    "on-click": "notify-send 'TODO: Implement rofi exit menu"
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$DOTFILES_DIR/waybar/exit_menu.xml",
+    "menu-actions": {
+      "shutdown": "systemctl poweroff",
+      "suspend": "systemctl suspend",
+      "reboot": "systemctl reboot",
+      "logout": "loginctl terminate-user \"\""
+    }
   },
   // Clock
   "clock": {
