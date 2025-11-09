@@ -11,11 +11,15 @@ fi
 
 echo ""
 echo "AUR:"
-aur_updates="$(pacman -Qm | aur vercmp)"
-if ! [ "$aur_updates" == "" ]; then
-  echo "$aur_updates" | awk '{print "- " $0}' | column -t
+if ! $DOTFILES_DIR/hypr/scripts/updates-aur-available.sh; then
+  echo "ERROR - AUR could not be reached"
 else
-  echo "No updates available"
+  aur_updates="$(pacman -Qm | aur vercmp)"
+  if ! [ "$aur_updates" == "" ]; then
+    echo "$aur_updates" | awk '{print "- " $0}' | column -t
+  else
+    echo "No updates available"
+  fi
 fi
 
 echo ""
