@@ -93,7 +93,7 @@
     "interval": 1800,
     "signal": 1,
     "hide-empty-text": true,
-    "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/hypr/scripts/updates-run.sh\"; pkill -SIGRTMIN+1 waybar"
+    "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/waybar/scripts/update-run.sh\""
   },
   // Hypridle
   "custom/hypridle": {
