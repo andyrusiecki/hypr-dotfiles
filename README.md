@@ -1,8 +1,6 @@
 # Dotfiles - Hyprland Setup
 
 ## TODO
-- rofi power menu
-- waybar weather module
 - on install: copy nm-applet from autostart to hide in tray
 - on install: set gnome keyring as passstore for vscode
 

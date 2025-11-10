@@ -23,9 +23,6 @@ touch $HOME/.config/hypr/monitors.conf
 # hypridle config (requires a symlink)
 ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
 
-# hyprsunset config (requires a symlink)
-ln -s $root/hypr/hyprsunset.conf $HOME/.config/hypr/hyprsunset.conf
-
 # waybar configs
 if [ -d "$HOME/.config/waybar" ]; then
   echo "Backing up existing Waybar config to $HOME/.config/waybar.bak"
