@@ -77,3 +77,4 @@ fi
 
 # reload/restart apps that wal doesn't handle
 dunstctl reload
+pywalfox update
