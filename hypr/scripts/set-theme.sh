@@ -76,5 +76,12 @@ else
 fi
 
 # reload/restart apps that wal doesn't handle
+
+# dunst
 dunstctl reload
+
+# firefox
 pywalfox update
+
+# obsidian
+$DOTFILES_DIR/hypr/scripts/set-theme-obsidian.sh
