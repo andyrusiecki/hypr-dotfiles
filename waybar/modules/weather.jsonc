@@ -1,0 +1,11 @@
+{
+  "custom/weather": {
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "format-icons": {
+      "default": "W"
+    },
+    "exec": "$DOTFILES_DIR/waybar/scripts/weather-status.sh",
+    "interval": 1200
+  }
+}

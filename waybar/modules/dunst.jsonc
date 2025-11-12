@@ -1,0 +1,15 @@
+{
+  "custom/dunst": {
+    "format": "{icon}{text}",
+    "return-type": "json",
+    "format-icons": {
+      "paused": "",
+      "default": ""
+    },
+    "exec-if": "pgrep dunst",
+    "exec": "$DOTFILES_DIR/waybar/scripts/dunst-status.sh",
+    "on-click": "$DOTFILES_DIR/hypr/scripts/toggle-dnd.sh; pkill -SIGRTMIN+2 waybar",
+    "signal": 2,
+    "interval": 5
+  }
+}

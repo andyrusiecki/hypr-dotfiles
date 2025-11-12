@@ -1,0 +1,25 @@
+{
+  "custom/media": {
+    "format": "{icon} {text}",
+    "format-icons": {
+      "default": " ",
+      "chrome": "󰊯 ",
+      "chromium": "󰊯 ",
+      "firefox": " ",
+      "spotify": " ",
+      "twitch": " ",
+      "youtube": " "
+    },
+    "escape": true,
+    "interval": 1,
+    "tooltip": true,
+    "exec-if": "playerctl status >/dev/null 2>&1",
+    "exec": "$DOTFILES_DIR/waybar/scripts/media-status.sh",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar",
+    "max-length": 100
+  }
+}

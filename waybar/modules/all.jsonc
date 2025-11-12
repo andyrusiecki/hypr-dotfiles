@@ -1,0 +1,25 @@
+{
+  "include": [
+    "$DOTFILES_DIR/waybar/modules/album-art.jsonc",
+    "$DOTFILES_DIR/waybar/modules/battery.jsonc",
+    "$DOTFILES_DIR/waybar/modules/bluetooth.jsonc",
+    "$DOTFILES_DIR/waybar/modules/clock.jsonc",
+    "$DOTFILES_DIR/waybar/modules/cpu.jsonc",
+    "$DOTFILES_DIR/waybar/modules/dunst.jsonc",
+    "$DOTFILES_DIR/waybar/modules/exit.jsonc",
+    "$DOTFILES_DIR/waybar/modules/hypridle.jsonc",
+    "$DOTFILES_DIR/waybar/modules/hyprland-workspaces.jsonc",
+    "$DOTFILES_DIR/waybar/modules/idle-inhibitor.jsonc",
+    "$DOTFILES_DIR/waybar/modules/media.jsonc",
+    "$DOTFILES_DIR/waybar/modules/memory.jsonc",
+    "$DOTFILES_DIR/waybar/modules/network.jsonc",
+    "$DOTFILES_DIR/waybar/modules/power-profiles-daemon.jsonc",
+    "$DOTFILES_DIR/waybar/modules/privacy.jsonc",
+    "$DOTFILES_DIR/waybar/modules/pulseaudio.jsonc",
+    "$DOTFILES_DIR/waybar/modules/screen-recording.jsonc",
+    "$DOTFILES_DIR/waybar/modules/tray.jsonc",
+    "$DOTFILES_DIR/waybar/modules/updates.jsonc",
+    "$DOTFILES_DIR/waybar/modules/weather.jsonc",
+    "$DOTFILES_DIR/waybar/modules/wireplumber.jsonc"
+  ]
+}

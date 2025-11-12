@@ -1,0 +1,52 @@
+{
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "sort-by-name": true,
+    "format": " {name} {windows} ",
+    "format-icons": {
+      "default": "",
+      // "1": "2",
+      // "2": "2",
+      // "3": "3",
+      // "4": "4",
+      // "5": "5",
+      // "6": "6",
+      // "7": "7",
+      // "8": "8",
+      // "9": "9",
+      "active": ""
+    },
+    /*"persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },*/
+    "format-window-separator": "",
+    "window-rewrite-default": " ",
+    "window-rewrite": {
+      "class<code>": " ",
+      "class<discord>": " ",
+      "class<discord> title<Discord Updater>": "",
+      "class<firefox>": " ",
+      "class<firefox> title<Picture-in-Picture>": "",
+      "class<google-chrome>": "󰊯 ",
+      "class<kitty>": " ",
+      "class<obsidian>": "󰠮 ",
+      "class<org.gnome.Nautilus>": "󰪶 ",
+      "class<signal>": " ",
+      "class<slack>": " ",
+      "class<spotify>": " ",
+      "class<steam>": "",
+      "class<steam> title<Steam>": " ",
+      "class<steam_app_.*>": " ",
+      "class<TUI.float>": " ",
+      "class<zoom>": " ",
+      "class<zoom> title<Settings>": "",
+      "class<zoom> title<menu window>": ""
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  }
+}

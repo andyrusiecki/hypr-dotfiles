@@ -1,0 +1,16 @@
+{
+  "wireplumber": {
+    "scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "on-click": "uwsm-app -- kitty --class TUI.float wiremix",
+    "tooltip-format": "Output:\t{node_name}\t{volume}%\nInput:\t{source_desc}\t{source_volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        " "
+      ]
+    }
+  }
+}
