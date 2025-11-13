@@ -4,6 +4,12 @@ weather_json=$(curl -s "https://wttr.in/?format=j1")
 sunrise=$(echo "$weather_json" | jq -r -c '.weather[0].astronomy[0].sunrise')
 sunset=$(echo "$weather_json" | jq -r -c '.weather[0].astronomy[0].sunset')
 
+if [ -z "$sunrise" ] || [ -z "$sunset" ]; then
+  echo "Error: Unable to fetch sunrise/sunset times."
+  echo "Using existing configuration if available."
+  exit 0
+fi
+
 transition_time_min=60
 transition_stages=5
 
