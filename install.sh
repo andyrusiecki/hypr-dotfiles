@@ -53,6 +53,16 @@ ln -s $root/dunst/dunstrc $HOME/.config/dunst/dunstrc
 mkdir -p "$HOME/.config/dunst/dunstrc.d"
 ln -s $HOME/.cache/wal/colors-dunst.conf $HOME/.config/dunst/dunstrc.d/theme.conf
 
+# swaync configs
+if [ -d "$HOME/.config/swaync" ]; then
+  echo "Backing up existing Swaync config to $HOME/.config/swaync.bak"
+  mv "$HOME/.config/swaync" "$HOME/.config/swaync.bak"
+fi
+
+mkdir -p "$HOME/.config/swaync"
+ln -s $root/swaync/config.json $HOME/.config/swaync/config.json
+echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+
 # kitty configs
 if [ -d "$HOME/.config/kitty" ]; then
   echo "Backing up existing Kitty config to $HOME/.config/kitty.bak"

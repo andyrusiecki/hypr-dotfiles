@@ -3,7 +3,6 @@ hyprland
 kitty
 xdg-desktop-portal-hyprland
 waybar
-dunst
 hyprpaper
 yazi
 wl-clip-persist
@@ -24,3 +23,5 @@ qt6-wayland
 hyprshot
 gpu-screen-recorder
 python-pywalfox
+swaync
+socat

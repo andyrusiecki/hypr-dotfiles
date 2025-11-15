@@ -17,6 +17,7 @@
     "$DOTFILES_DIR/waybar/modules/privacy.jsonc",
     "$DOTFILES_DIR/waybar/modules/pulseaudio.jsonc",
     "$DOTFILES_DIR/waybar/modules/screen-recording.jsonc",
+    "$DOTFILES_DIR/waybar/modules/swaync.jsonc",
     "$DOTFILES_DIR/waybar/modules/tray.jsonc",
     "$DOTFILES_DIR/waybar/modules/updates.jsonc",
     "$DOTFILES_DIR/waybar/modules/weather.jsonc",
