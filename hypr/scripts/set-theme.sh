@@ -81,7 +81,14 @@ fi
 $DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
 
 # dunst
-dunstctl reload
+if pgrep dunst >/dev/null; then
+  dunstctl reload
+fi
+
+# swaync
+if pgrep swaync >/dev/null; then
+  swaync-client -rs
+fi
 
 # firefox
 pywalfox update

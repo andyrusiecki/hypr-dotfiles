@@ -27,6 +27,21 @@
 	"hide-on-action": true,
 	"script-fail-notify": true,
 
+  "notification-visibility": {
+    "audio-input-notif": {
+      "state": "transient",
+      "app-name": "audio-input-notif"
+    },
+    "audio-output-notif": {
+      "state": "transient",
+      "app-name": "audio-output-notif"
+    },
+    "backlight-notif": {
+      "state": "transient",
+      "app-name": "backlight-notif"
+    }
+  },
+
   "widgets": [
     "mpris",
     "title",

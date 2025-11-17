@@ -6,4 +6,9 @@ volume=$(echo "$status" | awk '{print $2}')
 volume=$(echo "( $volume * 100 ) / 1" | bc)
 muted=$(echo "$status" | awk '{print $3}')
 
-notify-send -t 1000 -a 'audio' -h int:value:$volume "Microphone: ${volume}% $muted"
+notify-send -t 1000 \
+  -a 'audio-input-notif' \
+  -h int:value:$volume \
+  -h string:private-synchronous:audio-input-notif \
+  -h boolean:SWAYNC_BYPASS_DND:true \
+  "Microphone: ${volume}% $muted"
