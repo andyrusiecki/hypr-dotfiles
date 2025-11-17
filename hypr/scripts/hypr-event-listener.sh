@@ -10,10 +10,12 @@ check_active_fullscreen() {
     is_fullscreen=true
     hyprsunset_prev_temp="$(hyprctl hyprsunset temperature)"
 
+    echo "Fullscreen detected, disabling hyprsunset (setting temp to $hyprsunset_default_temp K)"
     hyprctl hyprsunset temperature $hyprsunset_default_temp
   elif $is_fullscreen; then
     is_fullscreen=false
     # replace with hyprsunset reset once released
+    echo "Exiting fullscreen, re-enabling hyprsunset (restoring temp to $hyprsunset_prev_temp K)"
     hyprctl hyprsunset temperature $hyprsunset_prev_temp
   fi
 }
