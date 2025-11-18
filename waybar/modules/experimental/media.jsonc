@@ -1,0 +1,43 @@
+{
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/media-player",
+      "group/media-track"
+      //"custom/media-time"
+    ]
+  },
+  "group/media-track": {
+    "orientation": "vertical",
+		"modules": [
+			"custom/media-title",
+      "custom/media-byline"
+		]
+  },
+  "custom/media-player": {
+    "exec": "playerctl --follow  metadata --format '{\"alt\":\"{{playerName}}\"}'",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "default": " ",
+      "chrome": "󰊯 ",
+      "chromium": "󰊯 ",
+      "firefox": " ",
+      "spotify": " ",
+      "twitch": " ",
+      "youtube": " "
+    }
+  },
+  "custom/media-title": {
+    "exec": "playerctl --follow metadata title",
+    "exec-if": "playerctl status"
+  },
+  "custom/media-byline": {
+    "exec": "playerctl --follow metadata artist",
+    "exec-if": "playerctl status"
+  },
+  "custom/media-time": {
+    "exec": "playerctl --follow metadata --format '[{{ duration(position) }}/{{ duration(mpris:length) }}]'",
+    "exec-if": "playerctl status"
+  }
+}

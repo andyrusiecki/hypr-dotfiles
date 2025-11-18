@@ -45,6 +45,7 @@
 #wireplumber,
 #idle_inhibitor,
 #privacy,
+#mpris,
 #custom-brightness,
 #custom-dunst,
 #custom-swaync,
@@ -123,3 +124,22 @@ tooltip label {
     color: @foreground;
 }
 
+#media {
+    color: @foreground;
+    background: transparent;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+    border-radius: 1rem;
+}
+
+#media #custom-media-title {
+    background-color: @background;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+#media #custom-media-byline {
+    background-color: @background;
+    font-style: italic;
+    font-size: 10px;
+}

@@ -19,6 +19,7 @@
   // Modules Center
   "modules-center": [
     "custom/media"
+    // "group/media"
   ],
 
   // Modules Right
