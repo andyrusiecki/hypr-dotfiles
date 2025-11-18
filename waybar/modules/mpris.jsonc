@@ -1,0 +1,17 @@
+{
+  "mpris": {
+    "format": "{player} ({status}) {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["title", "artist", "album", "position", "length"],
+    "title-len": 30,
+    "dynamic-len": 60,
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
+    // "ignored-players": ["firefox"]
+  }
+}
