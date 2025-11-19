@@ -1,29 +1,38 @@
 #!/bin/bash
 
-blocked_classes=(
-  "steam"
+approved_classes=(
+  "code"
+  "kitty"
 )
 
-terminal_pid=$(hyprctl activewindow | awk '/pid:/ {print $2}')
-terminal_class=$(hyprctl activewindow | awk '/class:/ {print $2}')
+window_pid=$(hyprctl activewindow | awk '/pid:/ {print $2}')
+window_class=$(hyprctl activewindow | awk '/class:/ {print $2}')
 
-for blocked_class in "${blocked_classes[@]}"; do
-  if [[ "$terminal_class" == *"$blocked_class"* ]]; then
-    echo "$HOME"
-    exit 0
+approved=false
+for approved_class in "${approved_classes[@]}"; do
+  if [[ "$window_class" == "$approved_class" ]]; then
+    approved=true
   fi
 done
 
-shell_pid=$(pgrep -P "$terminal_pid" | tail -n1)
+if ! $approved; then
+  echo "$HOME"
+  exit 0
+fi
 
-if [[ -n $shell_pid ]]; then
+shell_pid=$(pgrep -P "$window_pid" | tail -n1)
+
+cwd="$HOME"
+
+if [[ "$window_class" == "code" ]]; then
+  cwd="$(strings "/proc/$window_pid/cmdline" | tail -n 1)"
+elif [[ -n $shell_pid ]]; then
   cwd=$(readlink -f "/proc/$shell_pid/cwd" 2>/dev/null)
+fi
 
-  if [[ -d $cwd ]]; then
-    echo "$cwd"
-  else
-    echo "$HOME"
-  fi
+if [[ -d $cwd ]]; then
+  echo "$cwd"
 else
   echo "$HOME"
 fi
+
