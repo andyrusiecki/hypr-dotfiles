@@ -21,9 +21,9 @@
     "$DOTFILES_DIR/waybar/modules/swaync.jsonc",
     "$DOTFILES_DIR/waybar/modules/tray.jsonc",
     "$DOTFILES_DIR/waybar/modules/updates.jsonc",
-    "$DOTFILES_DIR/waybar/modules/weather.jsonc",
     "$DOTFILES_DIR/waybar/modules/wireplumber.jsonc",
 
-    "$DOTFILES_DIR/waybar/modules/experimental/media.jsonc"
+    "$DOTFILES_DIR/waybar/modules/experimental/media.jsonc",
+    "$DOTFILES_DIR/waybar/modules/experimental/weather.jsonc"
   ]
 }
