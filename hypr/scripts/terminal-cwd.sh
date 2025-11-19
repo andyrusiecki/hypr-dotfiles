@@ -1,6 +1,6 @@
 #!/bin/bash
 
-blocked_classes = (
+blocked_classes=(
   "steam"
 )
 
