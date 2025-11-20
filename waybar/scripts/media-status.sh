@@ -35,7 +35,7 @@ fi
 
 # youtube.com keeps the position running even while paused, so we skip time display for it
 progress_display=""
-progress_percent="0"
+progress_percent=""
 if [[ "$player" != "youtube" ]]; then
   if [[ ${#length} -gt 10 ]]; then
     progress_display="LIVE"
@@ -64,9 +64,15 @@ if [ -n "$progress_display" ]; then
   tooltip+="${newline}Time: $progress_display"
 fi
 
+class="[\"status-$status\""
+if [ -n "$progress_percent" ]; then
+  class+=",\"progress-$progress_percent\""
+fi
+class+="]"
+
 jq -n --unbuffered --compact-output \
   --arg alt "$player" \
   --arg text "$text" \
   --arg tooltip "$tooltip" \
-  --argjson class "[\"progress-$progress_percent\",\"status-$status\"]" \
+  --argjson class "$class" \
   '{alt: $alt, text: $text, tooltip: $tooltip, class: $class}'
