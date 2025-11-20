@@ -44,7 +44,8 @@
       "class<TUI.float>": " ",
       "class<zoom>": " ",
       "class<zoom> title<Settings>": "",
-      "class<zoom> title<menu window>": ""
+      "class<zoom> title<menu window>": "",
+      "class<zoom> title<zoom_linux_float_message_reminder>": ""
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"

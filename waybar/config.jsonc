@@ -12,34 +12,46 @@
 
   // Modules Left
   "modules-left": [
-    "hyprland/workspaces",
-    "custom/updates"
+    "hyprland/workspaces"
+
   ],
 
   // Modules Center
   "modules-center": [
     "custom/media"
     // "group/media"
+    // "mpris"
   ],
 
   // Modules Right
   "modules-right": [
-    "wireplumber",
-    "clock",
-    "tray",
-    //"idle_inhibitor",
+    "group/expand",
     "privacy",
     "custom/screen-recording",
+    "custom/updates",
+    "wireplumber",
     "bluetooth",
     "network",
-    "cpu",
-    "memory",
-    "custom/dunst",
     "custom/swaync",
-    "power-profiles-daemon",
     "battery",
-    //"custom/brightness",
-    //"custom/hypridle",
-    "custom/exit"
-  ]
+    "clock"
+  ],
+
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-to-left": true,
+      "click-to-reveal": false
+    },
+    "modules": [
+      "custom/expand",
+      "tray",
+      "idle_inhibitor",
+      "cpu",
+      "memory",
+      "power-profiles-daemon",
+      "custom/exit"
+    ]
+  }
 }

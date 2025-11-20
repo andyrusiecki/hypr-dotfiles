@@ -15,7 +15,8 @@
 		]
   },
   "custom/media-player": {
-    "exec": "playerctl --follow  metadata --format '{\"alt\":\"{{playerName}}\"}'",
+    "exec": "$DOTFILES_DIR/waybar/scripts/playerctl-status.sh player",
+    // "exec-if": "playerctl status",
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
@@ -26,18 +27,38 @@
       "spotify": " ",
       "twitch": " ",
       "youtube": " "
-    }
+    },
+    "interval": 1,
+    "signal": 4,
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
   },
   "custom/media-title": {
-    "exec": "playerctl --follow metadata title",
-    "exec-if": "playerctl status"
+    "exec": "$DOTFILES_DIR/waybar/scripts/playerctl-status.sh title",
+    "interval": 1,
+    "justify": "left",
+    "align": 0,
+    "signal": 4,
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+    // "exec-if": "playerctl status"
   },
   "custom/media-byline": {
-    "exec": "playerctl --follow metadata artist",
-    "exec-if": "playerctl status"
+    "exec": "$DOTFILES_DIR/waybar/scripts/playerctl-status.sh byline",
+    "interval": 1,
+    "justify": "left",
+    "align": 0,
+    "signal": 4,
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+    // "exec-if": "playerctl status"
   },
   "custom/media-time": {
-    "exec": "playerctl --follow metadata --format '[{{ duration(position) }}/{{ duration(mpris:length) }}]'",
-    "exec-if": "playerctl status"
+    "exec": "$DOTFILES_DIR/waybar/scripts/playerctl-status.sh time",
+    "interval": 1,
+    "signal": 4,
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+    // "exec-if": "playerctl status"
   }
 }

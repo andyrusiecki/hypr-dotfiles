@@ -8,6 +8,7 @@
     "tooltip-format": "Screen recording in progress",
     "exec": "$DOTFILES_DIR/waybar/scripts/screen-recording-status.sh",
     "return-type": "json",
+    "hide-empty-text": true,
     "signal": 3,
     "on-click": "pkill -SIGINT -f gpu-screen-recorder; pkill -SIGRTMIN+3 waybar"
   }

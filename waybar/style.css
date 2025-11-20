@@ -5,112 +5,14 @@
 }
 
 #waybar {
-    background: transparent;
-    color: @background;
-    margin: 5px 5px;
-}
-
-#workspaces {
-    border-radius: 1rem;
-    margin: 5px;
-/*    background-color: @background;*/
-    background-color: transparent;
-    margin-left: 1rem;
-}
-
-#workspaces button {
+    background: alpha(@background, 0.8);
     color: @foreground;
-    background-color: @background;
-    margin: 0 5px;
-    border-radius: 1rem;
-    padding: 0.4rem;
 }
 
-#workspaces button.active {
-    color: @background;
-    background-color: @foreground;
-    border-radius: 1rem;
-}
-
-#custom-media,
-#tray,
-#bluetooth,
-#cpu,
-#memory,
-#clock,
-#network,
-#power-profiles-daemon,
-#battery,
-#pulseaudio,
-#wireplumber,
-#idle_inhibitor,
-#privacy,
-#mpris,
-#custom-brightness,
-#custom-dunst,
-#custom-swaync,
-#custom-hypridle,
-#custom-updates,
-#custom-exit,
-#custom-screen-recording,
-#custom-weather {
+.module {
     color: @foreground;
-    background-color: @background;
+    /* background-color: @background; */
     padding: 0.5rem 1rem;
-    margin: 5px 0;
-}
-
-#clock {
-    color: @foreground;
-    border-radius: 0px 1rem 1rem 0px;
-    margin-right: 1rem;
-}
-
-#pulseaudio,
-#wireplumber {
-    color: @foreground;
-    border-radius: 1rem 0px 0px 1rem;
-    margin-left: 1rem;
-}
-
-#custom-media {
-    color: @foreground;
-    border-radius: 1rem;
-}
-
-#bluetooth {
-    border-radius: 1rem 0rem 0rem 1rem;
-    margin-left: 1rem;
-    color: @foreground;
-}
-
-#cpu,
-#network,
-#custom-hypridle,
-#custom-brightness {
-    color: @foreground;
-}
-
-#custom-exit {
-    border-radius: 0rem 1rem 1rem 0rem;
-    margin-right: 1rem;
-    color: @foreground;
-}
-
-#privacy,
-#custom-screen-recording,
-#tray {
-    border-radius: 1rem;
-}
-
-#privacy,
-#custom-screen-recording {
-    color: @color1;
-}
-
-#custom-updates {
-    border-radius: 1rem;
-    color: @foreground;
 }
 
 tooltip {
@@ -124,22 +26,171 @@ tooltip label {
     color: @foreground;
 }
 
-#media {
+#workspaces button {
     color: @foreground;
-    background: transparent;
-    padding: 0.5rem 1rem;
-    margin: 5px 0;
-    border-radius: 1rem;
+    padding: 0;
+    margin: 0;
+}
+#workspaces button:hover {
+    color: alpha(@color1, 0.8);
+    background-color: transparent;
 }
 
+#workspaces button.active {
+    color: @color1;
+    background-color: transparent;
+    /* background-color: @foreground; */
+}
+
+@keyframes spin {
+  to { font-weight: bold; }
+}
+
+#expand:hover #custom-expand {
+    animation-name: spin;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#privacy,
+#custom-screen-recording {
+    color: @color1;
+}
+
+#media #custom-media-player {
+    font-size:20px;
+}
 #media #custom-media-title {
-    background-color: @background;
+    /* background-color: @background; */
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
+    padding: 0.5rem 0.5rem 0;
+    margin: 0px;
 }
 
 #media #custom-media-byline {
-    background-color: @background;
+    /* background-color: @background; */
     font-style: italic;
-    font-size: 10px;
+    font-size: 12px;
+    padding: 0 0.5rem 0.5rem;
+    margin: 0px;
 }
+
+
+@define-color progress-foreground @foreground;
+@define-color progress-background alpha(@foreground, 0.2);
+
+#custom-media {
+    border-radius: 0;
+    background-size: auto 2px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+
+}
+#custom-media.status-paused {
+    opacity: 0.5;
+}
+
+#custom-media.progress-0 {  background-image: linear-gradient(    to right,    @progress-foreground 0%,    @progress-background 0%  );}
+#custom-media.progress-1 {  background-image: linear-gradient(    to right,    @progress-foreground 1%,    @progress-background 1.1%  );}
+#custom-media.progress-2 {  background-image: linear-gradient(    to right,    @progress-foreground 2%,    @progress-background 2.1%  );}
+#custom-media.progress-3 {  background-image: linear-gradient(    to right,    @progress-foreground 3%,    @progress-background 3.1%  );}
+#custom-media.progress-4 {  background-image: linear-gradient(    to right,    @progress-foreground 4%,    @progress-background 4.1%  );}
+#custom-media.progress-5 {  background-image: linear-gradient(    to right,    @progress-foreground 5%,    @progress-background 5.1%  );}
+#custom-media.progress-6 {  background-image: linear-gradient(    to right,    @progress-foreground 6%,    @progress-background 6.1%  );}
+#custom-media.progress-7 {  background-image: linear-gradient(    to right,    @progress-foreground 7%,    @progress-background 7.1%  );}
+#custom-media.progress-8 {  background-image: linear-gradient(    to right,    @progress-foreground 8%,    @progress-background 8.1%  );}
+#custom-media.progress-9 {  background-image: linear-gradient(    to right,    @progress-foreground 9%,    @progress-background 9.1%  );}
+#custom-media.progress-10 {  background-image: linear-gradient(    to right,    @progress-foreground 10%,    @progress-background 10.1%  );}
+#custom-media.progress-11 {  background-image: linear-gradient(    to right,    @progress-foreground 11%,    @progress-background 11.1%  );}
+#custom-media.progress-12 {  background-image: linear-gradient(    to right,    @progress-foreground 12%,    @progress-background 12.1%  );}
+#custom-media.progress-13 {  background-image: linear-gradient(    to right,    @progress-foreground 13%,    @progress-background 13.1%  );}
+#custom-media.progress-14 {  background-image: linear-gradient(    to right,    @progress-foreground 14%,    @progress-background 14.1%  );}
+#custom-media.progress-15 {  background-image: linear-gradient(    to right,    @progress-foreground 15%,    @progress-background 15.1%  );}
+#custom-media.progress-16 {  background-image: linear-gradient(    to right,    @progress-foreground 16%,    @progress-background 16.1%  );}
+#custom-media.progress-17 {  background-image: linear-gradient(    to right,    @progress-foreground 17%,    @progress-background 17.1%  );}
+#custom-media.progress-18 {  background-image: linear-gradient(    to right,    @progress-foreground 18%,    @progress-background 18.1%  );}
+#custom-media.progress-19 {  background-image: linear-gradient(    to right,    @progress-foreground 19%,    @progress-background 19.1%  );}
+#custom-media.progress-20 {  background-image: linear-gradient(    to right,    @progress-foreground 20%,    @progress-background 20.1%  );}
+#custom-media.progress-21 {  background-image: linear-gradient(    to right,    @progress-foreground 21%,    @progress-background 21.1%  );}
+#custom-media.progress-22 {  background-image: linear-gradient(    to right,    @progress-foreground 22%,    @progress-background 22.1%  );}
+#custom-media.progress-23 {  background-image: linear-gradient(    to right,    @progress-foreground 23%,    @progress-background 23.1%  );}
+#custom-media.progress-24 {  background-image: linear-gradient(    to right,    @progress-foreground 24%,    @progress-background 24.1%  );}
+#custom-media.progress-25 {  background-image: linear-gradient(    to right,    @progress-foreground 25%,    @progress-background 25.1%  );}
+#custom-media.progress-26 {  background-image: linear-gradient(    to right,    @progress-foreground 26%,    @progress-background 26.1%  );}
+#custom-media.progress-27 {  background-image: linear-gradient(    to right,    @progress-foreground 27%,    @progress-background 27.1%  );}
+#custom-media.progress-28 {  background-image: linear-gradient(    to right,    @progress-foreground 28%,    @progress-background 28.1%  );}
+#custom-media.progress-29 {  background-image: linear-gradient(    to right,    @progress-foreground 29%,    @progress-background 29.1%  );}
+#custom-media.progress-30 {  background-image: linear-gradient(    to right,    @progress-foreground 30%,    @progress-background 30.1%  );}
+#custom-media.progress-31 {  background-image: linear-gradient(    to right,    @progress-foreground 31%,    @progress-background 31.1%  );}
+#custom-media.progress-32 {  background-image: linear-gradient(    to right,    @progress-foreground 32%,    @progress-background 32.1%  );}
+#custom-media.progress-33 {  background-image: linear-gradient(    to right,    @progress-foreground 33%,    @progress-background 33.1%  );}
+#custom-media.progress-34 {  background-image: linear-gradient(    to right,    @progress-foreground 34%,    @progress-background 34.1%  );}
+#custom-media.progress-35 {  background-image: linear-gradient(    to right,    @progress-foreground 35%,    @progress-background 35.1%  );}
+#custom-media.progress-36 {  background-image: linear-gradient(    to right,    @progress-foreground 36%,    @progress-background 36.1%  );}
+#custom-media.progress-37 {  background-image: linear-gradient(    to right,    @progress-foreground 37%,    @progress-background 37.1%  );}
+#custom-media.progress-38 {  background-image: linear-gradient(    to right,    @progress-foreground 38%,    @progress-background 38.1%  );}
+#custom-media.progress-39 {  background-image: linear-gradient(    to right,    @progress-foreground 39%,    @progress-background 39.1%  );}
+#custom-media.progress-40 {  background-image: linear-gradient(    to right,    @progress-foreground 40%,    @progress-background 40.1%  );}
+#custom-media.progress-41 {  background-image: linear-gradient(    to right,    @progress-foreground 41%,    @progress-background 41.1%  );}
+#custom-media.progress-42 {  background-image: linear-gradient(    to right,    @progress-foreground 42%,    @progress-background 42.1%  );}
+#custom-media.progress-43 {  background-image: linear-gradient(    to right,    @progress-foreground 43%,    @progress-background 43.1%  );}
+#custom-media.progress-44 {  background-image: linear-gradient(    to right,    @progress-foreground 44%,    @progress-background 44.1%  );}
+#custom-media.progress-45 {  background-image: linear-gradient(    to right,    @progress-foreground 45%,    @progress-background 45.1%  );}
+#custom-media.progress-46 {  background-image: linear-gradient(    to right,    @progress-foreground 46%,    @progress-background 46.1%  );}
+#custom-media.progress-47 {  background-image: linear-gradient(    to right,    @progress-foreground 47%,    @progress-background 47.1%  );}
+#custom-media.progress-48 {  background-image: linear-gradient(    to right,    @progress-foreground 48%,    @progress-background 48.1%  );}
+#custom-media.progress-49 {  background-image: linear-gradient(    to right,    @progress-foreground 49%,    @progress-background 49.1%  );}
+#custom-media.progress-50 {  background-image: linear-gradient(    to right,    @progress-foreground 50%,    @progress-background 50.1%  );}
+#custom-media.progress-51 {  background-image: linear-gradient(    to right,    @progress-foreground 51%,    @progress-background 51.1%  );}
+#custom-media.progress-52 {  background-image: linear-gradient(    to right,    @progress-foreground 52%,    @progress-background 52.1%  );}
+#custom-media.progress-53 {  background-image: linear-gradient(    to right,    @progress-foreground 53%,    @progress-background 53.1%  );}
+#custom-media.progress-54 {  background-image: linear-gradient(    to right,    @progress-foreground 54%,    @progress-background 54.1%  );}
+#custom-media.progress-55 {  background-image: linear-gradient(    to right,    @progress-foreground 55%,    @progress-background 55.1%  );}
+#custom-media.progress-56 {  background-image: linear-gradient(    to right,    @progress-foreground 56%,    @progress-background 56.1%  );}
+#custom-media.progress-57 {  background-image: linear-gradient(    to right,    @progress-foreground 57%,    @progress-background 57.1%  );}
+#custom-media.progress-58 {  background-image: linear-gradient(    to right,    @progress-foreground 58%,    @progress-background 58.1%  );}
+#custom-media.progress-59 {  background-image: linear-gradient(    to right,    @progress-foreground 59%,    @progress-background 59.1%  );}
+#custom-media.progress-60 {  background-image: linear-gradient(    to right,    @progress-foreground 60%,    @progress-background 60.1%  );}
+#custom-media.progress-61 {  background-image: linear-gradient(    to right,    @progress-foreground 61%,    @progress-background 61.1%  );}
+#custom-media.progress-62 {  background-image: linear-gradient(    to right,    @progress-foreground 62%,    @progress-background 62.1%  );}
+#custom-media.progress-63 {  background-image: linear-gradient(    to right,    @progress-foreground 63%,    @progress-background 63.1%  );}
+#custom-media.progress-64 {  background-image: linear-gradient(    to right,    @progress-foreground 64%,    @progress-background 64.1%  );}
+#custom-media.progress-65 {  background-image: linear-gradient(    to right,    @progress-foreground 65%,    @progress-background 65.1%  );}
+#custom-media.progress-66 {  background-image: linear-gradient(    to right,    @progress-foreground 66%,    @progress-background 66.1%  );}
+#custom-media.progress-67 {  background-image: linear-gradient(    to right,    @progress-foreground 67%,    @progress-background 67.1%  );}
+#custom-media.progress-68 {  background-image: linear-gradient(    to right,    @progress-foreground 68%,    @progress-background 68.1%  );}
+#custom-media.progress-69 {  background-image: linear-gradient(    to right,    @progress-foreground 69%,    @progress-background 69.1%  );}
+#custom-media.progress-70 {  background-image: linear-gradient(    to right,    @progress-foreground 70%,    @progress-background 70.1%  );}
+#custom-media.progress-71 {  background-image: linear-gradient(    to right,    @progress-foreground 71%,    @progress-background 71.1%  );}
+#custom-media.progress-72 {  background-image: linear-gradient(    to right,    @progress-foreground 72%,    @progress-background 72.1%  );}
+#custom-media.progress-73 {  background-image: linear-gradient(    to right,    @progress-foreground 73%,    @progress-background 73.1%  );}
+#custom-media.progress-74 {  background-image: linear-gradient(    to right,    @progress-foreground 74%,    @progress-background 74.1%  );}
+#custom-media.progress-75 {  background-image: linear-gradient(    to right,    @progress-foreground 75%,    @progress-background 75.1%  );}
+#custom-media.progress-76 {  background-image: linear-gradient(    to right,    @progress-foreground 76%,    @progress-background 76.1%  );}
+#custom-media.progress-77 {  background-image: linear-gradient(    to right,    @progress-foreground 77%,    @progress-background 77.1%  );}
+#custom-media.progress-78 {  background-image: linear-gradient(    to right,    @progress-foreground 78%,    @progress-background 78.1%  );}
+#custom-media.progress-79 {  background-image: linear-gradient(    to right,    @progress-foreground 79%,    @progress-background 79.1%  );}
+#custom-media.progress-80 {  background-image: linear-gradient(    to right,    @progress-foreground 80%,    @progress-background 80.1%  );}
+#custom-media.progress-81 {  background-image: linear-gradient(    to right,    @progress-foreground 81%,    @progress-background 81.1%  );}
+#custom-media.progress-82 {  background-image: linear-gradient(    to right,    @progress-foreground 82%,    @progress-background 82.1%  );}
+#custom-media.progress-83 {  background-image: linear-gradient(    to right,    @progress-foreground 83%,    @progress-background 83.1%  );}
+#custom-media.progress-84 {  background-image: linear-gradient(    to right,    @progress-foreground 84%,    @progress-background 84.1%  );}
+#custom-media.progress-85 {  background-image: linear-gradient(    to right,    @progress-foreground 85%,    @progress-background 85.1%  );}
+#custom-media.progress-86 {  background-image: linear-gradient(    to right,    @progress-foreground 86%,    @progress-background 86.1%  );}
+#custom-media.progress-87 {  background-image: linear-gradient(    to right,    @progress-foreground 87%,    @progress-background 87.1%  );}
+#custom-media.progress-88 {  background-image: linear-gradient(    to right,    @progress-foreground 88%,    @progress-background 88.1%  );}
+#custom-media.progress-89 {  background-image: linear-gradient(    to right,    @progress-foreground 89%,    @progress-background 89.1%  );}
+#custom-media.progress-90 {  background-image: linear-gradient(    to right,    @progress-foreground 90%,    @progress-background 90.1%  );}
+#custom-media.progress-91 {  background-image: linear-gradient(    to right,    @progress-foreground 91%,    @progress-background 91.1%  );}
+#custom-media.progress-92 {  background-image: linear-gradient(    to right,    @progress-foreground 92%,    @progress-background 92.1%  );}
+#custom-media.progress-93 {  background-image: linear-gradient(    to right,    @progress-foreground 93%,    @progress-background 93.1%  );}
+#custom-media.progress-94 {  background-image: linear-gradient(    to right,    @progress-foreground 94%,    @progress-background 94.1%  );}
+#custom-media.progress-95 {  background-image: linear-gradient(    to right,    @progress-foreground 95%,    @progress-background 95.1%  );}
+#custom-media.progress-96 {  background-image: linear-gradient(    to right,    @progress-foreground 96%,    @progress-background 96.1%  );}
+#custom-media.progress-97 {  background-image: linear-gradient(    to right,    @progress-foreground 97%,    @progress-background 97.1%  );}
+#custom-media.progress-98 {  background-image: linear-gradient(    to right,    @progress-foreground 98%,    @progress-background 98.1%  );}
+#custom-media.progress-99 {  background-image: linear-gradient(    to right,    @progress-foreground 99%,    @progress-background 99.1%  );}
+#custom-media.progress-100 {  background-image: linear-gradient(    to right,    @progress-foreground 100%,    @progress-background 100.1%  );}

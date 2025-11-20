@@ -1,40 +1,72 @@
 #!/bin/bash
 
-playerctl metadata --format '{"player":"{{ playerName }}","url":"{{ xesam:url }}","status":"{{ status }}","title":"{{ trunc(title, 40) }}","artist":"{{ artist }}","album":"{{ album }}","position":"{{ duration(position) }}","length":"{{ duration(mpris:length) }}", "art_url": "{{ mpris:artUrl }}"}' | \
-jq -r -c '{
-  "alt": if .url | contains("youtube.com") then
-    "youtube"
-  elif .url | contains("spotify.com") then
-    "spotify"
-  elif .url | contains("twitch.tv") then
-    "twitch"
+player="$(playerctl metadata --format '{{ playerName }}')"
+status="$(playerctl status | tr '[:upper:]' '[:lower:]')"
+title="$(playerctl metadata --format '{{ trunc(title, 40) }}')"
+artist="$(playerctl metadata --format '{{ artist }}')"
+album="$(playerctl metadata --format '{{ album }}')"
+
+position=$(playerctl metadata --format '{{ position }}')
+position_display="$(playerctl metadata --format '{{ duration(position) }}')"
+length=$(playerctl metadata --format '{{ mpris:length }}')
+length_display="$(playerctl metadata --format '{{ duration(mpris:length) }}')"
+
+url="$(playerctl metadata --format '{{ xesam:url }}')"
+album_art="$(playerctl metadata --format '{{ mpris:artUrl }}')"
+
+# player - custom options
+if [ -n "$url" ]; then
+  if [[ "$url" == *"youtube.com"* ]]; then
+    player="youtube"
+  elif [[ "$url" == *"spotify.com"* ]]; then
+    player="spotify"
+  elif [[ "$url" == *"twitch.tv"* ]]; then
+    player="twitch"
+  fi
+fi
+
+# text output
+text="$title"
+if [ -n "$artist" ]; then
+  text+=" - $artist"
+elif [ -n "$album" ]; then
+  text+=" - $album"
+fi
+
+# youtube.com keeps the position running even while paused, so we skip time display for it
+progress_display=""
+progress_percent="0"
+if [[ "$player" != "youtube" ]]; then
+  if [[ ${#length} -gt 10 ]]; then
+    progress_display="LIVE"
   else
-    .player
-  end,
-  "text": .title + (
-    if .artist != "" then
-      " - " + .artist
-    elif .album != "" then
-      " - " + .album
-    else
-      ""
-    end
-  ) + (
-    if (.length | length) > 10 then
-      " [LIVE]"
-    else
-      " [" + .position + "/" + .length + "]"
-    end
-  ),
-  "tooltip": "Track: " + .title + "\n" +
-    "Artist: " + .artist + "\n" +
-    "Album: " + .album + "\n" +
-    "Progress: " + (
-      if (.length | length) > 10 then
-        "LIVE"
-      else
-        .position + "/" + .length
-      end
-    )
-}
-'
+    progress_display="$position_display/$length_display"
+    progress_percent="$(( 100 * ${position%:*} / ${length%:*} ))"
+  fi
+fi
+
+# if [ -n "$progress_display" ]; then
+#   text+=" [$progress_display]"
+# fi
+
+newline=$'\n'
+tooltip="Track: $title"
+
+if [ -n "$artist" ]; then
+  tooltip+="${newline}Artist: $artist"
+fi
+
+if [ -n "$album" ]; then
+  tooltip+="${newline}Album: $album"
+fi
+
+if [ -n "$progress_display" ]; then
+  tooltip+="${newline}Time: $progress_display"
+fi
+
+jq -n --unbuffered --compact-output \
+  --arg alt "$player" \
+  --arg text "$text" \
+  --arg tooltip "$tooltip" \
+  --argjson class "[\"progress-$progress_percent\",\"status-$status\"]" \
+  '{alt: $alt, text: $text, tooltip: $tooltip, class: $class}'
