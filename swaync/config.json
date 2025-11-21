@@ -42,6 +42,13 @@
     }
   },
 
+  "scripts": {
+		"system-update": {
+			"exec": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/waybar/scripts/update-run.sh\"",
+			"app-name": "system-update",
+			"run-on": "action"
+		}
+	},
   "widgets": [
     "title",
     "dnd",
