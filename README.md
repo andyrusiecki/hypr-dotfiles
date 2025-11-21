@@ -12,4 +12,3 @@
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)
 - hyprsunset: reset command on exit from fullscreen (requires v0.3.4 to be released)
-- waybar: update module can have different results on different monitors
