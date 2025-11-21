@@ -21,7 +21,8 @@ echo "Flatpak:"
 flatpak update
 
 # update report for waybar
-$DOTFILES_DIR/hypr/scripts/check-pending-updates.sh & disown
+echo "Checking for any remaining updates..."
+$DOTFILES_DIR/hypr/scripts/check-pending-updates.sh
 
 # close
 echo ""

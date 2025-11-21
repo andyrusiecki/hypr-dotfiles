@@ -12,7 +12,8 @@
 .module {
     color: @foreground;
     /* background-color: @background; */
-    padding: 0.5rem 1rem;
+    padding: 0rem 0px;
+    margin: 5px 10px;
 }
 
 tooltip {

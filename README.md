@@ -2,11 +2,12 @@
 
 ## TODO
 - install script: copy nm-applet from autostart to hide in tray
-- install script: set gnome keyring as passstore for vscode
+- install script: set gnome keyring as passtore for vscode
 - swaync: control center styling
 - waybar: new multiline media player module with functioning progress bar
 - hyprlock: update config for new style
 - hyprlock: enable fprint support
+- install script: add hidden file to help with updating installs instead of moving to backup dir
 
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)

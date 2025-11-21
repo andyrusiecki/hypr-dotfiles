@@ -10,9 +10,7 @@ if [ ! -f "$report_location" ]; then
         --arg time $current_time \
         '{"last_checked": $time}' > "$report_location"
 
-    $DOTFILES_DIR/hypr/scripts/check-pending-updates.sh & disown
-    echo '{"alt": "", "text": ""}'
-    exit
+    $DOTFILES_DIR/hypr/scripts/check-pending-updates.sh
 fi
 
 last_checked=$(cat "$report_location" | jq -r '.last_checked')
@@ -22,9 +20,7 @@ if (( current_time - last_checked >= update_after_seconds )); then
         --arg time $current_time \
         '{"last_checked": $time}' > "$report_location"
 
-    $DOTFILES_DIR/hypr/scripts/check-pending-updates.sh & disown
-    echo '{"alt": "", "text": ""}'
-    exit
+    $DOTFILES_DIR/hypr/scripts/check-pending-updates.sh
 fi
 
 count=$(cat "$report_location" | jq -r '.count.total')

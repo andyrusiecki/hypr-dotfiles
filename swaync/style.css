@@ -40,9 +40,11 @@
   background: @background;
 }
 .notification-group .notification-group-buttons > button:hover {
+  color: @background;
   background-color: @accent;
 }
 .notification-group .notification-group-buttons > button:active {
+  color: @background;
   background-color: @accent-high;
 }
 .notification-row {
@@ -86,7 +88,7 @@
   font-weight: bold;
 }
 .time {
-  color: @secondary-accent ;
+  color: @secondary-accent;
 }
 .body {
   color: @text-color;
@@ -104,10 +106,11 @@
 .notification-action > button {
   border: none;
   border-radius: 6px;
+  color: @background;
   background-color: @accent;
 }
 .notification-action > button:hover {
-  background: @accent ;
+  background: @accent;
   color: @background;
 }
 
@@ -122,9 +125,11 @@
   box-shadow: none;
 }
 .close-button:hover {
+  color: @background;
   background: @accent;
 }
 .close-button:active {
+  color: @background;
   background: @accent-high;
 }
 .notification-group .notification-group-close-button .close-button {
@@ -145,8 +150,10 @@
 }
 .control-center-dnd {
   background: @background;
+  border: 1px solid @accent;
 }
 .control-center-dnd:checked {
+  color: @background;
   background: @accent;
 }
 .widget-title {
@@ -180,9 +187,11 @@
   background: @background;
 }
 .widget-mpris > box > button:hover {
+  color: @background;
   background: @accent;
 }
 .widget-mpris > box > button:active {
+  color: @background;
   background: @accent-high;
 }
 .widget-mpris-player {
@@ -198,9 +207,11 @@
   background-color: transparent;
 }
 .widget-mpris .widget-mpris-player .mpris-overlay button:hover {
+  color: @background;
   background: @accent;
 }
 .widget-mpris .widget-mpris-player .mpris-overlay button:active {
+  color: @background;
   background: @accent-high;
 }
 .widget-mpris-album-art {
@@ -218,13 +229,16 @@
   padding: 5px;
   border: none;
   border-radius: 6px;
+  color: @background;
   background: @accent;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @accent ;
+  color: @background;
+  background: @accent;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button:checked {
-  background: @accent ;
+  color: @background;
+  background: @accent;
 }
 .widget-menubar > box > .menu-button-bar > button {
   border: none;
@@ -242,8 +256,10 @@ scrollbar slider {
   background: @background;
 }
 scrollbar slider:hover {
+  color: @background;
   background: @accent;
 }
 scrollbar slider:active {
+  color: @background;
   background: @accent-high;
 }
