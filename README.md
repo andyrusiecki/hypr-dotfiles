@@ -6,6 +6,8 @@
 - swaync: control center styling
 - waybar: new multiline media player module with functioning progress bar
 - hyprland: move update checker scripts under `hypr`, create job to check for updates periodically
+- hyprlock: update config for new style
+- hyprlock: enable fprint support
 
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)
