@@ -6,6 +6,6 @@
     "interval": 1200,
     "signal": 1,
     "hide-empty-text": true,
-    "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/waybar/scripts/system-update.sh\""
+    "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/hypr/scripts/system-update.sh\""
   }
 }
