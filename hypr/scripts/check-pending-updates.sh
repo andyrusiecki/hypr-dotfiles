@@ -67,9 +67,6 @@ jq -na --compact-output \
     --arg num_aur_updates "$num_aur_updates" \
     --arg num_flatpak_updates "$num_flatpak_updates" \
     --arg total_updates "$num_updates" \
-    --arg time $current_time \
+    --arg time "$current_time" \
     --arg details "$details" \
     '{"count": {"total": $total_updates, "core": $num_core_updates, "aur": $num_aur_updates, "flatpak": $num_flatpak_updates}, "last_checked": $time, "details": $details}' > "$report_location"
-
-# signal waybar to refresh
-pkill -SIGRTMIN+1 waybar
