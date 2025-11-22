@@ -1,0 +1,10 @@
+[Unit]
+Description=Hyprland Update Checker
+After=wayland-session@hyprland.desktop.target
+
+[Timer]
+OnStartupSec=20
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

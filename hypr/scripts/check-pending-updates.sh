@@ -1,9 +1,14 @@
 #!/bin/bash
 
+echo "Checking for pending updates..."
 report_location="/tmp/hypr-pending-updates"
 
 # only checking AUR is available
 aur_available=$(curl -sf --connect-timeout 30 --retry 3 --retry-delay 3 "https://aur.archlinux.org/rpc/?v=5&type=info&arg=base" >/dev/null)
+
+if ! $aur_available; then
+    echo "Warning: AUR not currently available! Skipping AUR packages..."
+fi
 
 # get update counts
 num_core_updates=$(checkupdates --nocolor | wc -l)
@@ -20,8 +25,11 @@ num_updates=$((num_pkg_updates + num_flatpak_updates))
 newline=$'\n'
 details=""
 
+echo "Total updates available: $num_updates (Core: $num_core_updates, AUR: $num_aur_updates, Flatpak: $num_flatpak_updates)"
+
 if [ $num_updates -gt 0 ]; then
     (
+        set -m
         notify-send \
         -a "system-update" \
         -h "string:desktop-entry:System Update" \
@@ -70,3 +78,6 @@ jq -na --compact-output \
     --arg time "$current_time" \
     --arg details "$details" \
     '{"count": {"total": $total_updates, "core": $num_core_updates, "aur": $num_aur_updates, "flatpak": $num_flatpak_updates}, "last_checked": $time, "details": $details}' > "$report_location"
+
+# signal waybar to refresh
+pkill -SIGRTMIN+1 waybar

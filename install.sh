@@ -3,94 +3,187 @@
 default_wallpaper="/usr/share/hypr/wall0.png"
 
 root="$(realpath $(dirname $0))"
+dotfile_marker_file=".dotfiles_installed"
+
+function is_dotfiles_installed() {
+  if [ -f "$1/$dotfile_marker_file" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function create_dotfile_dir() {
+  if ! [ -d "$1" ]; then
+    echo "Creating directory at $1"
+    mkdir -p "$1"
+    touch "$1/$dotfile_marker_file"
+  fi
+}
+
+function set_symlink() {
+  if ! [ -e "$2" ]; then
+    ln -s "$1" "$2"
+    exit 0
+  fi
+
+  if ! [ -L "$2" ]; then
+    rm "$2"
+    ln -s "$1" "$2"
+    exit 0
+  fi
+
+  target=$(readlink "$2")
+  if [ "$target" != "$1" ]; then
+    rm "$2"
+    ln -s "$1" "$2"
+  fi
+}
 
 # packages
 echo "Installing packages from $root/packages.txt"
 paru -S --needed - < $root/packages.txt
 
 # hyprland configs
-if [ -d "$HOME/.config/hypr" ]; then
-  echo "Backing up existing Hypr config to $HOME/.config/hypr.bak"
-  mv "$HOME/.config/hypr" "$HOME/.config/hypr.bak"
+if is_dotfiles_installed "$HOME/.config/hypr"; then
+  echo "Updating Hyprland hyprland.conf file may require manual intervention."
+
+  if ! [ -f "$HOME/.config/hypr/monitors.conf" ]; then
+    touch $HOME/.config/hypr/monitors.conf
+  fi
+
+  set_symlink $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
+else
+  echo "Installing Hyprland config files..."
+
+  if [ -d "$HOME/.config/hypr" ]; then
+    echo "Backing up existing Hypr config to $HOME/.config/hypr.bak"
+    mv "$HOME/.config/hypr" "$HOME/.config/hypr.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/hypr"
+  echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = $HOME/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
+
+  # add empty monitor config to avoid errors before running hyprdynamicmonitors
+  touch $HOME/.config/hypr/monitors.conf
+
+  # hypridle config (requires a symlink)
+  ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
 fi
-
-mkdir -p "$HOME/.config/hypr"
-echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = $HOME/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
-
-# add empty monitor config to avoid errors before running hyprdynamicmonitors
-touch $HOME/.config/hypr/monitors.conf
-
-# hypridle config (requires a symlink)
-ln -s $root/hypr/hypridle.conf $HOME/.config/hypr/hypridle.conf
 
 # waybar configs
-if [ -d "$HOME/.config/waybar" ]; then
-  echo "Backing up existing Waybar config to $HOME/.config/waybar.bak"
-  mv "$HOME/.config/waybar" "$HOME/.config/waybar.bak"
+if is_dotfiles_installed "$HOME/.config/waybar"; then
+  echo "Updating Waybar config.jsonc and style.css files may require manual intervention."
+else
+  echo "Installing Waybar config files..."
+
+  if [ -d "$HOME/.config/waybar" ]; then
+    echo "Backing up existing Waybar config to $HOME/.config/waybar.bak"
+    mv "$HOME/.config/waybar" "$HOME/.config/waybar.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/waybar"
+  echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
+  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 fi
 
-mkdir -p "$HOME/.config/waybar"
-echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
-echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 
 # btop configs
-if [ -d "$HOME/.config/btop" ]; then
-  echo "Backing up existing Btop config to $HOME/.config/btop.bak"
-  mv "$HOME/.config/btop" "$HOME/.config/btop.bak"
+if is_dotfiles_installed "$HOME/.config/btop"; then
+  set_symlink $root/btop/btop.conf $HOME/.config/btop/btop.conf
+else
+  echo "Installing btop config files..."
+
+  if [ -d "$HOME/.config/btop" ]; then
+    echo "Backing up existing Btop config to $HOME/.config/btop.bak"
+    mv "$HOME/.config/btop" "$HOME/.config/btop.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/btop"
+  ln -s $root/btop/btop.conf $HOME/.config/btop/btop.conf
 fi
 
-mkdir -p "$HOME/.config/btop"
-ln -s $root/btop/btop.conf $HOME/.config/btop/btop.conf
-
-# dunst configs
-if [ -d "$HOME/.config/dunst" ]; then
-  echo "Backing up existing Dunst config to $HOME/.config/dunst.bak"
-  mv "$HOME/.config/dunst" "$HOME/.config/dunst.bak"
-fi
-
-mkdir -p "$HOME/.config/dunst"
-ln -s $root/dunst/dunstrc $HOME/.config/dunst/dunstrc
-mkdir -p "$HOME/.config/dunst/dunstrc.d"
-ln -s $HOME/.cache/wal/colors-dunst.conf $HOME/.config/dunst/dunstrc.d/theme.conf
 
 # swaync configs
-if [ -d "$HOME/.config/swaync" ]; then
-  echo "Backing up existing Swaync config to $HOME/.config/swaync.bak"
-  mv "$HOME/.config/swaync" "$HOME/.config/swaync.bak"
-fi
+if is_dotfiles_installed "$HOME/.config/swaync"; then
+  set_symlink $root/swaync/config.json $HOME/.config/swaync/config.json
+  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+else
+  echo "Installing Swaync config files..."
 
-mkdir -p "$HOME/.config/swaync"
-ln -s $root/swaync/config.json $HOME/.config/swaync/config.json
-echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+  if [ -d "$HOME/.config/swaync" ]; then
+    echo "Backing up existing Swaync config to $HOME/.config/swaync.bak"
+    mv "$HOME/.config/swaync" "$HOME/.config/swaync.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/swaync"
+  ln -s $root/swaync/config.json $HOME/.config/swaync/config.json
+  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+fi
 
 # kitty configs
-if [ -d "$HOME/.config/kitty" ]; then
-  echo "Backing up existing Kitty config to $HOME/.config/kitty.bak"
-  mv "$HOME/.config/kitty" "$HOME/.config/kitty.bak"
+if is_dotfiles_installed "$HOME/.config/kitty"; then
+  set_symlink $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+else
+  echo "Installing Kitty config files..."
+
+  if [ -d "$HOME/.config/kitty" ]; then
+    echo "Backing up existing Kitty config to $HOME/.config/kitty.bak"
+    mv "$HOME/.config/kitty" "$HOME/.config/kitty.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/kitty"
+  ln -s $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 fi
 
-mkdir -p "$HOME/.config/kitty"
-ln -s $root/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
 # pywal configs
-if [ -d "$HOME/.config/wal" ]; then
-  echo "Backing up existing Pywal config to $HOME/.config/wal.bak"
-  mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
+if is_dotfiles_installed "$HOME/.config/wal"; then
+  set_symlink $root/wal/colorschemes $HOME/.config/wal/colorschemes
+  set_symlink $root/wal/templates $HOME/.config/wal/templates
+else
+  echo "Installing Pywal config files..."
+
+  if [ -d "$HOME/.config/wal" ]; then
+    echo "Backing up existing Pywal config to $HOME/.config/wal.bak"
+    mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/wal"
+  ln -s $root/wal/colorschemes $HOME/.config/wal/colorschemes
+  ln -s $root/wal/templates $HOME/.config/wal/templates
 fi
 
-ln -s $root/wal $HOME/.config/wal
 
 # yazi configs
-if [ -d "$HOME/.config/yazi" ]; then
-  echo "Backing up existing Yazi config to $HOME/.config/yazi.bak"
-  mv "$HOME/.config/yazi" "$HOME/.config/yazi.bak"
+if is_dotfiles_installed "$HOME/.config/yazi"; then
+  set_symlink $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
+else
+  echo "Installing Yazi config files..."
+
+  if [ -d "$HOME/.config/yazi" ]; then
+    echo "Backing up existing Yazi config to $HOME/.config/yazi.bak"
+    mv "$HOME/.config/yazi" "$HOME/.config/yazi.bak"
+  fi
+
+  create_dotfile_dir "$HOME/.config/yazi"
+  ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
 fi
 
-mkdir -p "$HOME/.config/yazi"
-ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
-ln -s $HOME/.config/hypr/theme/yazi-theme.toml $HOME/.config/yazi/theme.yml
+# systemd
+if [ -d "$HOME/.config/systemd/user" ]; then
+  mkdir -p "$HOME/.config/systemd/user"
+fi
 
-# set default wallpaper and color scheme
-echo "Setting default wallpaper to $default_wallpaper"
-echo "Generating color scheme with pywal"
-wal -stne -i $default_wallpaper
+cp $root/systemd/hypr-updates.service $HOME/.config/systemd/user/hypr-updates.service
+cp $root/systemd/hypr-updates.timer $HOME/.config/systemd/user/hypr-updates.timer
+sed -i "s|\$root|$root|g" $HOME/.config/systemd/user/hypr-updates.service
+systemctl --user daemon-reload
+systemctl --user enable --now hypr-updates.timer
+
+# set default wallpaper and color scheme if none exist
+if ! [ -f "$HOME/.cache/wal/wal" ]; then
+  echo "Setting default wallpaper to $default_wallpaper"
+  echo "Generating color scheme with pywal"
+  wal -stne -i $default_wallpaper
+fi
