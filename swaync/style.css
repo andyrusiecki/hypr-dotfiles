@@ -40,12 +40,16 @@
   background: @background;
 }
 .notification-group .notification-group-buttons > button:hover {
-  color: @background;
   background-color: @accent;
 }
-.notification-group .notification-group-buttons > button:active {
+.notification-group .notification-group-buttons > button:hover > label {
   color: @background;
+}
+.notification-group .notification-group-buttons > button:active {
   background-color: @accent-high;
+}
+.notification-group .notification-group-buttons > button:active > label {
+  color: @background;
 }
 .notification-row {
   margin-top: 3px;
@@ -109,9 +113,11 @@
   color: @background;
   background-color: @accent;
 }
+.notification-action > button > label {
+  color: @background;
+}
 .notification-action > button:hover {
   background: @accent;
-  color: @background;
 }
 
 .close-button {
@@ -125,12 +131,14 @@
   box-shadow: none;
 }
 .close-button:hover {
-  color: @background;
   background: @accent;
 }
 .close-button:active {
-  color: @background;
   background: @accent-high;
+}
+.close-button:hover > image,
+.close-button:active > image {
+  color: @background;
 }
 .notification-group .notification-group-close-button .close-button {
   margin: 15px 16px;
@@ -156,6 +164,10 @@
   color: @background;
   background: @accent;
 }
+.control-center-clear-all:hover > label,
+.control-center-clear-all:active > label {
+  color: @background;
+}
 .widget-title {
   margin: 8px 8px 3px 8px;
   padding-left: 8px;
@@ -174,6 +186,10 @@
 }
 .widget-title > button:active {
   background: @accent-high;
+}
+.widget-title > button:hover > label,
+.widget-title > button:active > label {
+  color: @background;
 }
 .widget-mpris {
   margin: 8px;
