@@ -87,23 +87,6 @@ else
   echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 fi
 
-
-# btop configs
-if is_dotfiles_installed "$HOME/.config/btop"; then
-  set_symlink $root/btop/btop.conf $HOME/.config/btop/btop.conf
-else
-  echo "Installing btop config files..."
-
-  if [ -d "$HOME/.config/btop" ]; then
-    echo "Backing up existing Btop config to $HOME/.config/btop.bak"
-    mv "$HOME/.config/btop" "$HOME/.config/btop.bak"
-  fi
-
-  create_dotfile_dir "$HOME/.config/btop"
-  ln -s $root/btop/btop.conf $HOME/.config/btop/btop.conf
-fi
-
-
 # swaync configs
 if is_dotfiles_installed "$HOME/.config/swaync"; then
   set_symlink $root/swaync/config.json $HOME/.config/swaync/config.json
@@ -152,22 +135,6 @@ else
   create_dotfile_dir "$HOME/.config/wal"
   ln -s $root/wal/colorschemes $HOME/.config/wal/colorschemes
   ln -s $root/wal/templates $HOME/.config/wal/templates
-fi
-
-
-# yazi configs
-if is_dotfiles_installed "$HOME/.config/yazi"; then
-  set_symlink $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
-else
-  echo "Installing Yazi config files..."
-
-  if [ -d "$HOME/.config/yazi" ]; then
-    echo "Backing up existing Yazi config to $HOME/.config/yazi.bak"
-    mv "$HOME/.config/yazi" "$HOME/.config/yazi.bak"
-  fi
-
-  create_dotfile_dir "$HOME/.config/yazi"
-  ln -s $root/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
 fi
 
 # systemd
