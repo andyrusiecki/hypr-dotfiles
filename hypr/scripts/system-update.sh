@@ -20,6 +20,12 @@ echo ""
 echo "Flatpak:"
 flatpak update
 
+# clearing existing update notifications
+notify-send \
+	-h "string:private-synchronous:system-update" \
+	-e -t 1 \
+	"Clearing Notifications"
+
 # update report for waybar
 echo "Checking for any remaining updates..."
 (

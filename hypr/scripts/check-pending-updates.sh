@@ -33,6 +33,7 @@ if [ $num_updates -gt 0 ]; then
         notify-send \
         -a "system-update" \
         -h "string:desktop-entry:System Update" \
+        -h "string:private-synchronous:system-update" \
         -i "archlinux-logo" \
         -A "Update" \
         "$num_updates Updates Available" "Core: $num_core_updates\nAUR: $num_aur_updates\nFlatpak: $num_flatpak_updates" \
