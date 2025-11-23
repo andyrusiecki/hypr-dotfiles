@@ -7,14 +7,14 @@ if [ ! -f "$report_location" ]; then
     exit
 fi
 
-count=$(cat "$report_location" | jq -r '.count.total')
+count=$(jq -r '.count.total' $report_location)
 
 if [ $count -lt 1 ]; then
     echo '{"alt": "", "text": ""}'
     exit
 fi
 
-details=$(cat "$report_location" | jq -r '.details')
+details=$(jq -r '.details' $report_location)
 
 # waybar module json output
 jq -na --compact-output \

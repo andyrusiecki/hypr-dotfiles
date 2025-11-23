@@ -13,7 +13,7 @@ if [ ! -f "$pywal_theme" ]; then
   exit 1
 fi
 
-vaults="$(cat $config_dir/obsidian.json | jq -r '.vaults[].path')"
+vaults="$(jq -r '.vaults[].path' $config_dir/obsidian.json)"
 
 for vault in $vaults; do
   themes_dir="$vault/.obsidian/themes"
@@ -37,7 +37,7 @@ for vault in $vaults; do
     continue
   fi
 
-  accent_color="$(cat $HOME/.cache/wal/colors.json | jq -r '.colors.color1')"
+  accent_color="$(jq -r '.colors.color1' $HOME/.cache/wal/colors.json)"
 
   jq --arg color "$accent_color" -r '.accentColor = $color | if (.enabledCssSnippets | contains(["pywal"])) then . else (.enabledCssSnippets |= . + ["pywal"]) end' "$appearance_file" > "$appearance_file.tmp"
   mv "$appearance_file.tmp" "$appearance_file"
