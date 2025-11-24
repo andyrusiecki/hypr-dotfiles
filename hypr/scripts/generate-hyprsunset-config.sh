@@ -1,8 +1,11 @@
 #!/bin/bash
 
-weather_json=$(curl -s "https://wttr.in/?format=j1")
-sunrise=$(echo "$weather_json" | jq -r -c '.weather[0].astronomy[0].sunrise')
-sunset=$(echo "$weather_json" | jq -r -c '.weather[0].astronomy[0].sunset')
+weather_json=$(mktemp)
+curl -s "https://wttr.in/?format=j1" -o "$weather_json"
+sunrise=$(jq -r -c '.weather[0].astronomy[0].sunrise' $weather_json)
+sunset=$(jq -r -c '.weather[0].astronomy[0].sunset' $weather_json)
+
+rm $weather_json
 
 if [ -z "$sunrise" ] || [ -z "$sunset" ]; then
   echo "Error: Unable to fetch sunrise/sunset times."
@@ -11,6 +14,7 @@ if [ -z "$sunrise" ] || [ -z "$sunset" ]; then
 fi
 
 transition_time_min=60
+transition_time_neg_offset=30
 transition_stages=5
 
 daytime_temp=6000
@@ -24,18 +28,21 @@ echo "- Sunset: $sunset"
 echo "- Daytime Temp: $daytime_temp K"
 echo "- Nighttime Temp: $nighttime_temp K"
 echo "- Transition Time: $transition_time_min min"
+echo "- Transition Time Offset: -$transition_time_neg_offset min"
 echo "- Transition Stages: $transition_stages"
 
 daytime_config="# Daytime Profile\n\
-# - starts at: $sunrise\n\
+# - sunrise at: $sunrise\n\
+# - transition starts at: $(date -d "$sunrise today - $transition_time_neg_offset minutes" '+%0I:%M %p')\n\
 # - temp to $daytime_temp K over $transition_time_min min in $transition_stages stages\n"
 
 nighttime_config="# Nighttime Profile\n\
-# - starts at: $sunset\n\
+# - sunset at: $sunset\n\
+# - transition starts at: $(date -d "$sunset today - $transition_time_neg_offset minutes" '+%0I:%M %p')\n\
 # - temp to $nighttime_temp K over $transition_time_min min in $transition_stages stages\n"
 
 for (( i=0; i <= $transition_stages; i++ )); do
-  time_offset=$(( $i * $transition_time_min / $transition_stages ))
+  time_offset=$(( $i * $transition_time_min / $transition_stages - $transition_time_neg_offset ))
   temp_offset=$(( ($i + 1) * ($daytime_temp - $nighttime_temp) / ($transition_stages + 1) ))
 
   daytime_config+="\n# Daytime Stage $i \n\
