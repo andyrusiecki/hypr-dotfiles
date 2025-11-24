@@ -53,7 +53,17 @@ if [ $num_updates -gt 0 ]; then
             pkg_updates+="$(pacman -Qm | aur vercmp)"
         fi
 
-        details+=" $num_pkg_updates Package updates available${newline}$(echo -e "$pkg_updates" | awk '{print "- " $0}' | column -t)"
+        details+=" $num_pkg_updates Package updates available${newline}"
+
+        if [ $num_pkg_updates -gt 30 ]; then
+            priority_updates="$(echo -e "$pkg_updates" | awk '{print "- " $0}' | grep --color=never -E 'linux|nvidia|mesa|glibc|systemd|coreutils|hypr' | column -t)"
+
+            remaining_count=$((num_pkg_updates - $(echo -e "$priority_updates" | wc -l)))
+
+            details+="${priority_updates}${newline}-  And $remaining_count more package updates..."
+        else
+            details+="$(echo -e "$pkg_updates" | awk '{print "- " $0}' | column -t)"
+        fi
     fi
 
     # flatpak updates
