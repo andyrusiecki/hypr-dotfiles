@@ -2,7 +2,7 @@
   "pulseaudio": {
     "scroll-step": 1,
     "format": "{icon} {volume}%",
-    "on-click": "uwsm-app -- kitty --class TUI.float wiremix",
+    "on-click": "uwsm-app -- kitty --class waybar.float wiremix",
     "tooltip-format": "Playing at {volume}%",
     "format-muted": "",
     "format-icons": {
