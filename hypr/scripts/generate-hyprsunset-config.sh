@@ -15,7 +15,7 @@ fi
 
 transition_time_min=60
 transition_time_neg_offset=30
-transition_stages=5
+transition_stages=10
 
 daytime_temp=6000
 nighttime_temp=3000
@@ -41,9 +41,9 @@ nighttime_config="# Nighttime Profile\n\
 # - transition starts at: $(date -d "$sunset today - $transition_time_neg_offset minutes" '+%0I:%M %p')\n\
 # - temp to $nighttime_temp K over $transition_time_min min in $transition_stages stages\n"
 
-for (( i=0; i <= $transition_stages; i++ )); do
-  time_offset=$(( $i * $transition_time_min / $transition_stages - $transition_time_neg_offset ))
-  temp_offset=$(( ($i + 1) * ($daytime_temp - $nighttime_temp) / ($transition_stages + 1) ))
+for (( i=1; i <= $transition_stages; i++ )); do
+  time_offset=$(( ($i - 1) * $transition_time_min / ($transition_stages - 1) - $transition_time_neg_offset ))
+  temp_offset=$(( $i * ($daytime_temp - $nighttime_temp) / $transition_stages ))
 
   daytime_config+="\n# Daytime Stage $i \n\
 profile {\n\
