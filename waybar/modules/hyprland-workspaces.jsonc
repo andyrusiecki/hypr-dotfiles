@@ -27,6 +27,7 @@
     "window-rewrite-default": " ",
     "window-rewrite": {
       "class<code>": " ",
+      "class<chrome-chatgpt.com_.*>": " ",
       "class<discord>": " ",
       "class<discord> title<Discord Updater>": "",
       "class<firefox>": " ",
