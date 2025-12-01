@@ -23,6 +23,7 @@
     "$DOTFILES_DIR/waybar/modules/custom-media.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-screen-recording.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-swaync.jsonc",
+    "$DOTFILES_DIR/waybar/modules/custom-tailscale.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-updates.jsonc",
 
     "$DOTFILES_DIR/waybar/modules/experimental/media.jsonc",

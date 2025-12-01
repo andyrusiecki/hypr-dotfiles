@@ -48,6 +48,7 @@
       "custom/expand",
       "tray",
       "idle_inhibitor",
+      "custom/tailscale",
       "cpu",
       "memory",
       "power-profiles-daemon",

@@ -79,6 +79,9 @@ tooltip label {
     margin: 0px;
 }
 
+#custom-tailscale.stopped {
+    opacity: 0.5;
+}
 
 @define-color progress-foreground @foreground;
 @define-color progress-background alpha(@foreground, 0.2);

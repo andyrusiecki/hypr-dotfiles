@@ -1,0 +1,16 @@
+{
+  "custom/tailscale": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "󱗼",
+      "needslogin": "󱗼*",
+      "connected": "󱗼"
+    },
+    "interval": 5,
+    "tooltip": true,
+    "exec-if": "pgrep tailscaled",
+    "exec": "$DOTFILES_DIR/waybar/scripts/tailscale-status.sh",
+    "return-type": "json",
+    "on-click": "$DOTFILES_DIR/waybar/scripts/tailscale-action.sh"
+  }
+}
