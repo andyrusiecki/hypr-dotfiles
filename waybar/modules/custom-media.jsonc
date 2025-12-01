@@ -13,7 +13,7 @@
     "escape": true,
     "interval": 1,
     "tooltip": true,
-    "exec-if": "playerctl status >/dev/null 2>&1",
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
     "exec": "$DOTFILES_DIR/waybar/scripts/media-status.sh",
     "return-type": "json",
     "on-click": "playerctl play-pause",

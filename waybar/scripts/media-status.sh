@@ -1,7 +1,18 @@
 #!/bin/bash
 
-player="$(playerctl metadata --format '{{ playerName }}')"
 status="$(playerctl status | tr '[:upper:]' '[:lower:]')"
+
+if [ -z "$status" ] || [ "$status" == "stopped" ]; then
+  # no player active
+  jq -n --unbuffered --compact-output \
+    --arg alt "none" \
+    --arg text "" \
+    --argjson class '["status-stopped"]' \
+    '{alt: $alt, text: $text, class: $class}'
+  exit 0
+fi
+
+player="$(playerctl metadata --format '{{ playerName }}')"
 title="$(playerctl metadata --format '{{ trunc(title, 40) }}')"
 artist="$(playerctl metadata --format '{{ artist }}')"
 album="$(playerctl metadata --format '{{ album }}')"
