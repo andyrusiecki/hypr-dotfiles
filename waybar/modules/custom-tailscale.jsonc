@@ -11,6 +11,7 @@
     "exec-if": "pgrep tailscaled",
     "exec": "$DOTFILES_DIR/waybar/scripts/tailscale-status.sh",
     "return-type": "json",
-    "on-click": "$DOTFILES_DIR/waybar/scripts/tailscale-action.sh"
+    "on-click": "$DOTFILES_DIR/waybar/scripts/tailscale-action.sh state",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/tailscale-action.sh account"
   }
 }
