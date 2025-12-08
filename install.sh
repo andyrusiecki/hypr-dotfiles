@@ -62,7 +62,7 @@ else
   fi
 
   create_dotfile_dir "$HOME/.config/hypr"
-  echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = $HOME/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
+  echo -e "\$dotfiles = $root\n#\$wallpapers = <Set Wallpaper directory here to use Theme Selector>\n#\$code_dir = <Set Code Directory here to use VS Code Quick Launch>\n#\$scripts_dir = <Set Script directory here to use Custom Script Runner>\nsource = \$dotfiles/hypr/hyprland.conf\n\nsource = $HOME/.config/hypr/monitors.conf\n" > $HOME/.config/hypr/hyprland.conf
 
   # add empty monitor config to avoid errors before running hyprdynamicmonitors
   touch $HOME/.config/hypr/monitors.conf
