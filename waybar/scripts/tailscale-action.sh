@@ -1,11 +1,13 @@
 #!/bin/bash
 function notify() {
   notify-send \
+    -e \
+    -t 3000 \
     -a "tailscale" \
     -i "network-workgroup" \
     -h string:private-synchronous:tailscale-notif \
     -h boolean:SWAYNC_BYPASS_DND:true \
-    "$1"
+    "Tailscale" "$1"
 }
 
 function toggle_state() {
