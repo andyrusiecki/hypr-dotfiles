@@ -1,5 +1,7 @@
 #!/bin/bash
 
+label_separator=" • "
+
 status="$(playerctl status | tr '[:upper:]' '[:lower:]')"
 
 if [ -z "$status" ] || [ "$status" == "stopped" ]; then
@@ -39,9 +41,9 @@ fi
 # text output
 text="$title"
 if [ -n "$artist" ]; then
-  text+=" - $artist"
+  text+="$label_separator$artist"
 elif [ -n "$album" ]; then
-  text+=" - $album"
+  text+="$label_separator$album"
 fi
 
 # youtube.com keeps the position running even while paused, so we skip time display for it
