@@ -4,20 +4,30 @@ echo "Starting System Update..."
 echo ""
 
 # Arch + AUR updates
-echo "Packages:"
+echo "===== Packages ====="
 
-# only updating AUR packages if AUR is available
-aur_available=$(curl -sf --connect-timeout 30 --retry 3 --retry-delay 3 "https://aur.archlinux.org/rpc/?v=5&type=info&arg=base" >/dev/null)
-if $aur_available; then
-	paru -Syu
-else
+aur_helper=""
+if command -v yay >/dev/null 2>&1; then
+	aur_helper="yay"
+elif command -v paru >/dev/null 2>&1; then
+	aur_helper="paru"
+fi
+
+if [ -z "$aur_helper" ]; then
+	echo "No AUR helper found! Please install yay or paru to enable AUR updates."
+	echo "Proceeding with standard pacman update..."
+	sudo pacman -Syu
+elif ! $aur_available; then
 	echo "Note: AUR not currently available! Skipping AUR packages..."
 	sudo pacman -Syu
+else
+	echo "Using AUR helper: $aur_helper"
+	$aur_helper -Syu
 fi
 
 # flatpak updates
 echo ""
-echo "Flatpak:"
+echo "===== Flatpak ====="
 flatpak update
 
 # clearing existing update notifications
@@ -32,8 +42,6 @@ echo "Checking for any remaining updates..."
 	set -m
 	$DOTFILES_DIR/hypr/scripts/check-pending-updates.sh > /dev/null 2>&1 &
 )
-
-#TODO: dismiss any update notifications after update is complete
 
 # close
 echo ""
