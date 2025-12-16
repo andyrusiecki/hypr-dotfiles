@@ -16,18 +16,22 @@ fi
 if [ -z "$aur_helper" ]; then
 	echo "No AUR helper found! Please install yay or paru to enable AUR updates."
 	echo "Proceeding with standard pacman update..."
+	echo ""
 	sudo pacman -Syu
 elif ! $aur_available; then
 	echo "Note: AUR not currently available! Skipping AUR packages..."
+	echo ""
 	sudo pacman -Syu
 else
 	echo "Using AUR helper: $aur_helper"
+	echo ""
 	$aur_helper -Syu
 fi
 
 # flatpak updates
 echo ""
 echo "===== Flatpak ====="
+echo ""
 flatpak update
 
 # clearing existing update notifications
