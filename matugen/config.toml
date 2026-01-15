@@ -1,0 +1,45 @@
+[config]
+caching = true
+
+# TODO: GTK3 - https://github.com/InioX/matugen-themes?tab=readme-ov-file#gtk
+# TODO: launcher - (rofi, etc)
+# TODO: notifications - (mako, dunst, etc)
+# TODO: qt
+# TODO: starship
+
+[templates.btop]
+input_path = 'templates/btop.theme'
+output_path = '../themes/matugen/btop.theme'
+
+[templates.dunst]
+input_path = 'templates/dunst-theme.conf'
+output_path = '../themes/matugen/dunst-theme.conf'
+
+[templates.hyprland]
+input_path = 'templates/hyprland-colors.conf'
+output_path = '../themes/matugen/hyprland-colors.conf'
+
+[templates.hyprlock]
+input_path = 'templates/hyprlock-colors.conf'
+output_path = '../themes/matugen/hyprlock-colors.conf'
+
+[templates.kitty]
+# TODO:: still needs work - https://github.com/InioX/matugen-themes?tab=readme-ov-file#kitty
+input_path = 'templates/kitty-colors.conf'
+output_path = '../themes/matugen/kitty-colors.conf'
+
+[templates.rofi]
+input_path = 'templates/rofi-colors.rasi'
+output_path = '../themes/matugen/rofi-colors.rasi'
+
+[templates.walker]
+input_path = 'templates/walker-colors.css'
+output_path = '../themes/matugen/walker-colors.css'
+
+[templates.waybar]
+input_path = 'templates/waybar-colors.css'
+output_path = '../themes/matugen/waybar-colors.css'
+
+[templates.yazi]
+input_path = 'templates/yazi-theme.toml'
+output_path = '../themes/matugen/yazi-theme.toml'
