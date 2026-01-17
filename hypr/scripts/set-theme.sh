@@ -77,6 +77,9 @@ fi
 
 # reload/restart apps that wal doesn't handle
 
+# kitty
+pkill -SIGUSR1 kitty
+
 # chrome
 $DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
 
