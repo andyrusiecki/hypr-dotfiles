@@ -17,8 +17,8 @@ transition_time_min=60
 transition_time_neg_offset=30
 transition_stages=10
 
-daytime_temp=6000
-nighttime_temp=3000
+daytime_temp=6500
+nighttime_temp=4000
 
 config_file="$HOME/.config/hypr/hyprsunset.conf"
 
