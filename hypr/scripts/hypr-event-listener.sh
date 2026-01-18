@@ -2,18 +2,25 @@
 
 hyprsunset_default_temp="6000"
 hyprsunset_prev_temp=""
-is_fullscreen=false
+current_fullscreen_state=false
 
 # disable hyprsunset when a window goes fullscreen, re-enable it when exiting fullscreen
 check_active_fullscreen() {
-  if [[ "$(hyprctl activewindow -j | jq -r '.fullscreen')" == "2" ]]; then
-    is_fullscreen=true
+  fullscreen_state="$(hyprctl activewindow -j | jq -r '.fullscreen')"
+  new_fullscreen_state=$([[ "$fullscreen_state" == "2" || "$fullscreen_state" == "3" ]] && echo true || echo false)
+
+  if [[ $current_fullscreen_state == $new_fullscreen_state ]]; then
+    return
+  fi
+
+  if $new_fullscreen_state; then
+    current_fullscreen_state=true
     hyprsunset_prev_temp="$(hyprctl hyprsunset temperature)"
 
     echo "Fullscreen detected, disabling hyprsunset (setting temp to $hyprsunset_default_temp K)"
     hyprctl hyprsunset temperature $hyprsunset_default_temp
-  elif $is_fullscreen; then
-    is_fullscreen=false
+  else
+    current_fullscreen_state=false
     # replace with hyprsunset reset once released
     echo "Exiting fullscreen, re-enabling hyprsunset (restoring temp to $hyprsunset_prev_temp K)"
     hyprctl hyprsunset temperature $hyprsunset_prev_temp
@@ -22,7 +29,7 @@ check_active_fullscreen() {
 
 handle() {
   case $1 in
-    activewindow*|fullscreen*)
+    activewindow*|closewindow*|fullscreen*)
       check_active_fullscreen
       ;;
   esac
