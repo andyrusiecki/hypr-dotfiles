@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import Quickshell.Wayland
 
 import "./modules" as Modules
 
