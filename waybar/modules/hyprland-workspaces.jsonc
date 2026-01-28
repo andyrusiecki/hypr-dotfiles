@@ -2,7 +2,7 @@
   "hyprland/workspaces": {
     "disable-scroll": false,
     "sort-by-name": true,
-    "format": " {name} {windows} ",
+    "format": "{name}:{windows}",
     "format-icons": {
       "default": "",
       // "1": "2",
@@ -48,7 +48,19 @@
       "class<zoom> title<menu window>": "",
       "class<zoom> title<zoom_linux_float_message_reminder>": ""
     },
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+    // "format": "{icon}: {windows}",
+    "workspace-taskbar": {
+      "enable": true,
+      "update-active-window": true,
+      "format": "{icon}",
+      "icon-size": 20,
+      "ignore-list": [
+        "Picture-in-Picture",
+        "zoom_linux_float_message_reminder"
+      ]
+      // "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1"
   }
 }
