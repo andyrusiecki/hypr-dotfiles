@@ -42,7 +42,7 @@ function set_symlink() {
 
 # packages
 echo "Installing packages from $root/packages.txt"
-paru -S --needed - < $root/packages.txt
+paru -S --needed $(<$root/packages.txt)
 
 # hyprland configs
 if is_dotfiles_installed "$HOME/.config/hypr"; then
