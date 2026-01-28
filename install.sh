@@ -137,17 +137,6 @@ else
   ln -s $root/wal/templates $HOME/.config/wal/templates
 fi
 
-# systemd
-if [ -d "$HOME/.config/systemd/user" ]; then
-  mkdir -p "$HOME/.config/systemd/user"
-fi
-
-cp $root/systemd/hypr-updates.service $HOME/.config/systemd/user/hypr-updates.service
-cp $root/systemd/hypr-updates.timer $HOME/.config/systemd/user/hypr-updates.timer
-sed -i "s|\$root|$root|g" $HOME/.config/systemd/user/hypr-updates.service
-systemctl --user daemon-reload
-systemctl --user enable --now hypr-updates.timer
-
 # set default wallpaper and color scheme if none exist
 if ! [ -f "$HOME/.cache/wal/wal" ]; then
   echo "Setting default wallpaper to $default_wallpaper"

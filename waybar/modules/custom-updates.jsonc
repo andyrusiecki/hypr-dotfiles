@@ -2,8 +2,8 @@
   "custom/updates": {
     "format": " {}",
     "return-type": "json",
-    "exec": "$DOTFILES_DIR/waybar/scripts/pending-updates-status.sh",
-    "interval": 1200,
+    "exec": "$DOTFILES_DIR/waybar/scripts/system-update-status.sh",
+    "interval": 300,
     "signal": 1,
     "hide-empty-text": true,
     "on-click": "uwsm-app -- kitty --class TUI.float /bin/bash -c \"$DOTFILES_DIR/hypr/scripts/system-update.sh\""

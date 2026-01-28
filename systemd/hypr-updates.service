@@ -1,7 +1,0 @@
-[Unit]
-Description=Hyprland Update Checker
-
-[Service]
-Type=oneshot
-ExecStart=$root/hypr/scripts/check-pending-updates.sh
-
