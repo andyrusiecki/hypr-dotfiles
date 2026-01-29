@@ -45,6 +45,16 @@ check_contrast = true
 # ¡ If either one is a directory, then both SHOULD be one. !
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
 
+[templates.colors]
+# used by vscode wallust theme extension
+template = 'colors.json'
+target = '~/.cache/wallust/colors.json'
+
+[templates.colors-json]
+# used by vscode wallust theme extension
+template = 'colors'
+target = '~/.cache/wallust/colors'
+
 [templates.kitty]
 template = 'kitty.conf'
 target = '~/.config/kitty/colors.conf'
