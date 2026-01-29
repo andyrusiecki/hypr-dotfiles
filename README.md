@@ -7,6 +7,19 @@
 - waybar: new multiline media player module with functioning progress bar
 - hyprlock: update config for new style
 - hyprlock: enable fprint support
+- explore using wallust for color management
+  - add templates from pywal (https://github.com/eylles/pywal16/tree/master/pywal/templates):
+    - hyprland (consolidate with existing config)
+    - kitty (consolidate with existing config)
+    - rofi
+    - vim/nvim
+    - waybar
+    - swaync
+    - chrome/chromium?
+    - firefox?
+    - obsidian?
+    - vscode?
+    - pywal compatibility?
 
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)

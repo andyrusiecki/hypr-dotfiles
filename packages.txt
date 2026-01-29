@@ -23,4 +23,6 @@ hyprshot
 gpu-screen-recorder
 swaync
 socat
-python313
+python-pywal16
+python-pywalfox
+wallust

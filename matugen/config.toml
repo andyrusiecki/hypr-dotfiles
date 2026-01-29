@@ -28,6 +28,10 @@ output_path = 'output/hyprlock-colors.conf'
 input_path = 'templates/kitty-colors.conf'
 output_path = 'output/kitty-colors.conf'
 
+[templates.pywal]
+input_path = 'templates/pywal.json'
+output_path = 'output/pywal.json'
+
 [templates.rofi]
 input_path = 'templates/rofi-colors.rasi'
 output_path = 'output/rofi-colors.rasi'
