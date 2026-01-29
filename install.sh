@@ -137,9 +137,15 @@ else
   ln -s $root/wal/templates $HOME/.config/wal/templates
 fi
 
+# python venv for pywal16 and pywalfox
+if ! [ -d "$root/python" ]; then
+  echo "Creating python venv and installing pywal16 and pywalfox..."
+  $root/scripts/install-python-deps.sh
+fi
+
 # set default wallpaper and color scheme if none exist
 if ! [ -f "$HOME/.cache/wal/wal" ]; then
   echo "Setting default wallpaper to $default_wallpaper"
   echo "Generating color scheme with pywal"
-  wal -stne -i $default_wallpaper
+  $root/python/bin/wal -stne -i $default_wallpaper
 fi

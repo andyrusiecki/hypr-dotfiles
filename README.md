@@ -7,7 +7,6 @@
 - waybar: new multiline media player module with functioning progress bar
 - hyprlock: update config for new style
 - hyprlock: enable fprint support
-- explore using python venv for pywal-16 and pywalfox dependencies
 
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)

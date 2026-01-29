@@ -56,7 +56,7 @@ while read -r line; do
     theme_options+="$option\n"
     ((count++))
   fi
-done < <(wal --theme)
+done < <($DOTFILES_DIR/python/bin/wal --theme)
 
 ((selected++))
 
@@ -69,10 +69,10 @@ fi
 
 if [ "$colorscheme" == "$custom_option" ]; then
   echo "Generating color scheme from wallpaper."
-  wal -i $wallpaper
+  $DOTFILES_DIR/python/bin/wal -i $wallpaper
 else
   echo "Selected theme: $colorscheme"
-  wal -i $wallpaper --theme $colorscheme
+  $DOTFILES_DIR/python/bin/wal -i $wallpaper --theme $colorscheme
 fi
 
 # reload/restart apps that wal doesn't handle
@@ -94,7 +94,7 @@ if pgrep swaync >/dev/null; then
 fi
 
 # firefox
-pywalfox update
+$DOTFILES_DIR/python/bin/pywalfox update
 
 # obsidian
 $DOTFILES_DIR/hypr/scripts/set-theme-obsidian.sh
