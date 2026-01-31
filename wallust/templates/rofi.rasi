@@ -26,6 +26,9 @@
     background-color: @background;
     border-color: @background;
     spacing: 2;
+
+    {% import "common" as common %}
+    font: "{{ common.font_family }} Medium 12";
 }
 
 #window {

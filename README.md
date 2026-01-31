@@ -5,7 +5,6 @@
 - install script: set gnome keyring as passtore for vscode
 - swaync: control center styling
 - waybar: new multiline media player module with functioning progress bar
-- hyprlock: update config for new style
 - hyprlock: enable fprint support
 - wallust templates
   - vim/neovim

@@ -5,7 +5,6 @@ configuration {
 }
 
 * {
-    font:   "Hack Nerd Font Medium 12";
     margin:     0;
     padding:    0;
     spacing:    0;
