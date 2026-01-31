@@ -45,21 +45,54 @@ check_contrast = true
 # ¡ If either one is a directory, then both SHOULD be one. !
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
 
+[templates.btop]
+template = 'btop.theme'
+target = '~/.config/btop/themes/wallust.theme'
+
 [templates.colors]
+# used by vscode wallust theme extension
+template = 'colors'
+target = '~/.cache/wallust/colors'
+
+[templates.colors-json]
 # used by vscode wallust theme extension
 template = 'colors.json'
 target = '~/.cache/wallust/colors.json'
 
-[templates.colors-json]
-# used by vscode wallust theme extension
-template = 'colors'
-target = '~/.cache/wallust/colors'
+[templates.colors-sh]
+template = 'colors.sh'
+target = '~/.cache/wallust/colors.sh'
+
+[templates.dunst]
+template = 'dunst.conf'
+target = '~/.config/dunst/dunstrc.d/colors.conf'
+
+[templates.hyprland]
+template = 'hyprland.conf'
+target = '~/.config/hypr/colors.conf'
 
 [templates.kitty]
 template = 'kitty.conf'
 target = '~/.config/kitty/colors.conf'
 
-[templates.hyprland]
-template = 'hyprland.conf'
-target = '~/.config/hypr/colors.conf'
+[templates.obsidian]
+template = 'obsidian.css'
+target = '~/.cache/wallust/obsidian.css'
+
+[templates.pywal]
+# used by pywalfox firefox extension
+template = 'colors.json'
+target = '~/.cache/wal/colors.json'
+
+[templates.rofi]
+template = 'rofi.rasi'
+target = '~/.config/rofi/colors.rasi'
+
+[templates.swaync]
+template = 'swaync.css'
+target = '~/.config/swaync/colors.css'
+
+[templates.waybar]
+template = 'waybar.css'
+target = '~/.config/waybar/colors.css'
 

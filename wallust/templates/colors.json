@@ -1,6 +1,8 @@
 {
   "checksum": ":)",
+  "theme": "{{wallpaper}}",
   "wallpaper": "{{wallpaper}}",
+  "palette": "{{palette}}",
   "alpha": "100",
 
   "special": {

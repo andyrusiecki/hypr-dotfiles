@@ -1,4 +1,4 @@
-@import "~/.cache/wal/colors-rofi-dark"
+@import "~/.config/rofi/colors"
 
 configuration {
   show-icons: true;

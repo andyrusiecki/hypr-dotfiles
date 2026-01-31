@@ -84,13 +84,13 @@ else
 
   create_dotfile_dir "$HOME/.config/waybar"
   echo -e "{\n  \"include\": [\n    \"$root/waybar/config.jsonc\"\n  ]\n}" > $HOME/.config/waybar/config.jsonc
-  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
+  echo -e "@import \"colors.css\";\n@import \"$root/waybar/style.css\";" > $HOME/.config/waybar/style.css
 fi
 
 # swaync configs
 if is_dotfiles_installed "$HOME/.config/swaync"; then
   set_symlink $root/swaync/config.json $HOME/.config/swaync/config.json
-  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+  echo -e "@import \"colors.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
 else
   echo "Installing Swaync config files..."
 
@@ -101,7 +101,7 @@ else
 
   create_dotfile_dir "$HOME/.config/swaync"
   ln -s $root/swaync/config.json $HOME/.config/swaync/config.json
-  echo -e "@import \"$HOME/.cache/wal/colors-waybar.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
+  echo -e "@import \"colors.css\";\n@import \"$root/swaync/style.css\";" > $HOME/.config/swaync/style.css
 fi
 
 # kitty configs
@@ -121,31 +121,34 @@ fi
 
 
 # pywal configs
-if is_dotfiles_installed "$HOME/.config/wal"; then
-  set_symlink $root/wal/colorschemes $HOME/.config/wal/colorschemes
-  set_symlink $root/wal/templates $HOME/.config/wal/templates
-else
-  echo "Installing Pywal config files..."
+# if is_dotfiles_installed "$HOME/.config/wal"; then
+#   set_symlink $root/wal/colorschemes $HOME/.config/wal/colorschemes
+#   set_symlink $root/wal/templates $HOME/.config/wal/templates
+# else
+#   echo "Installing Pywal config files..."
 
-  if [ -d "$HOME/.config/wal" ]; then
-    echo "Backing up existing Pywal config to $HOME/.config/wal.bak"
-    mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
-  fi
+#   if [ -d "$HOME/.config/wal" ]; then
+#     echo "Backing up existing Pywal config to $HOME/.config/wal.bak"
+#     mv "$HOME/.config/wal" "$HOME/.config/wal.bak"
+#   fi
 
-  create_dotfile_dir "$HOME/.config/wal"
-  ln -s $root/wal/colorschemes $HOME/.config/wal/colorschemes
-  ln -s $root/wal/templates $HOME/.config/wal/templates
-fi
+#   create_dotfile_dir "$HOME/.config/wal"
+#   ln -s $root/wal/colorschemes $HOME/.config/wal/colorschemes
+#   ln -s $root/wal/templates $HOME/.config/wal/templates
+# fi
 
 # python venv for pywal16 and pywalfox
-if ! [ -d "$root/python" ]; then
-  echo "Creating python venv and installing pywal16 and pywalfox..."
-  $root/scripts/install-python-deps.sh
-fi
+# if ! [ -d "$root/python" ]; then
+#   echo "Creating python venv and installing pywal16 and pywalfox..."
+#   $root/scripts/install-python-deps.sh
+# fi
 
 # set default wallpaper and color scheme if none exist
-if ! [ -f "$HOME/.cache/wal/wal" ]; then
+if ! [ -f "$HOME/.config/hypr/wallpaper.conf" ]; then
   echo "Setting default wallpaper to $default_wallpaper"
-  echo "Generating color scheme with pywal"
-  $root/python/bin/wal -stne -i $default_wallpaper
+  echo "\$wallpaper = $default_wallpaper" > ~/.config/hypr/wallpaper.conf
+  hyprctl hyprpaper wallpaper ", $default_wallpaper, fill"
+
+  echo "Generating color scheme with wallust"
+  wallust -d $root/wallust run --palette dark16 "$default_wallpaper"
 fi
