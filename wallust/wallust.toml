@@ -67,6 +67,14 @@ target = '~/.cache/wallust/colors.sh'
 template = 'dunst.conf'
 target = '~/.config/dunst/dunstrc.d/colors.conf'
 
+[templates.gtk3]
+template = 'gtk3.css'
+target = '~/.config/gtk-3.0/colors.css'
+
+[templates.gtk4]
+template = 'gtk4.css'
+target = '~/.config/gtk-4.0/colors.css'
+
 [templates.hyprland]
 template = 'hyprland.conf'
 target = '~/.config/hypr/colors.conf'
