@@ -34,18 +34,8 @@ echo "===== Flatpak ====="
 echo ""
 flatpak update
 
-# clearing existing update notifications
-notify-send \
-	-h "string:private-synchronous:system-update" \
-	-e -t 1 \
-	"Clearing Notifications"
-
 # update report for waybar
-echo "Checking for any remaining updates..."
-(
-	set -m
-	$DOTFILES_DIR/hypr/scripts/system-update-check.sh > /dev/null 2>&1 &
-)
+$DOTFILES_DIR/hypr/scripts/system-update-check.sh
 
 # close
 echo ""

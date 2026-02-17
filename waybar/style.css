@@ -26,21 +26,27 @@ tooltip label {
     color: @foreground;
 }
 
-#workspaces button {
-    color: @foreground;
-    background-color: alpha(@foreground, 0.1);
-    padding: 4px;
-    margin: 4px;
-}
-#workspaces button:hover {
-    color: alpha(@background, 0.75);
-    background-color: alpha(@foreground, 0.75);
-}
+#workspaces button:nth-child(1) { color: @color1; }
+#workspaces button:nth-child(2) { color: @color2; }
+#workspaces button:nth-child(3) { color: @color3; }
+#workspaces button:nth-child(4) { color: @color4; }
+#workspaces button:nth-child(5) { color: @color5; }
+#workspaces button:nth-child(6) { color: @color6; }
+#workspaces button:nth-child(7) { color: @color1; }
 
-#workspaces button.active {
-    color: @background;
-    background-color: @foreground;
-    /* background-color: @foreground; */
+#workspaces button {
+    background-color: transparent;
+    opacity: 0.5;
+    font-size: 12px;
+    padding: 4px;
+    margin: 5px;
+    border-radius: 20px;
+}
+#workspaces button.empty {
+    color: @foreground;
+}
+#workspaces button.active, #workspaces button:hover {
+    opacity: 1.0;
 }
 
 @keyframes spin {
