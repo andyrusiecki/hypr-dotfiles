@@ -26,3 +26,4 @@ socat
 python-pywal16
 python-pywalfox
 wallust
+jolt
