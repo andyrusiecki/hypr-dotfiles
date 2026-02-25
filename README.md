@@ -9,6 +9,9 @@
 - wallust templates
   - vim/neovim
   - chrome/chromium?
+- implement [hyprshutdown](https://github.com/hyprwm/hyprshutdown)
+- update hypridle config similar to [example](https://wiki.hypr.land/Hypr-Ecosystem/hypridle/#examples)
+
 
 ## Bugs
 - hypridle: custom config location (requires v0.1.8 to be released)
