@@ -1,1 +1,1 @@
-{% set font_family = "Hack Nerd Font" %}
+{% set font_family = "AdwaitaMono Nerd Font" %}
