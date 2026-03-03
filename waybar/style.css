@@ -1,6 +1,5 @@
 * {
-    font-size: 16px;
-    min-height: 0;
+    font-size: 15px;
 }
 
 #waybar {
@@ -12,11 +11,11 @@
     color: @foreground;
     /* background-color: @background; */
     padding: 0rem 0px;
-    margin: 5px 10px;
+    margin: 0px 7px;
 }
 
 tooltip {
-    background-color: alpha(@background, 0.9);
+    background-color: @background;
     padding: 20px;
     margin: 0px;
     border-radius: 1rem;
@@ -37,9 +36,9 @@ tooltip label {
 #workspaces button {
     background-color: transparent;
     opacity: 0.5;
-    font-size: 12px;
-    padding: 4px;
-    margin: 5px;
+    font-size: 15px;
+    padding: 0px 0px;
+    margin: 0px 5px;
     border-radius: 20px;
 }
 #workspaces button.empty {
@@ -73,7 +72,7 @@ tooltip label {
     /* background-color: @background; */
     font-weight: bold;
     font-size: 12px;
-    padding: 0.5rem 0.5rem 0;
+    padding: 0 0.5rem 0.5rem 0;
     margin: 0px;
 }
 
@@ -81,7 +80,7 @@ tooltip label {
     /* background-color: @background; */
     font-style: italic;
     font-size: 12px;
-    padding: 0 0.5rem 0.5rem;
+    padding: 0 0.5rem 0.5rem 0;
     margin: 0px;
 }
 

@@ -46,16 +46,15 @@ elif [ -n "$album" ]; then
   text+="$label_separator$album"
 fi
 
-# youtube.com keeps the position running even while paused, so we skip time display for it
+# youtube.com keeps the position running even while paused, this can be fixed with an extension: https://github.com/LurkAndLoiter/youtube-mpris-fix
 progress_display=""
 progress_percent=""
-if [[ "$player" != "youtube" ]]; then
-  if [[ ${#length} -gt 10 ]]; then
-    progress_display="LIVE"
-  else
-    progress_display="$position_display/$length_display"
-    progress_percent="$(( 100 * ${position%:*} / ${length%:*} ))"
-  fi
+
+if [[ ${#length} -gt 10 ]]; then
+  progress_display="LIVE"
+else
+  progress_display="$position_display/$length_display"
+  progress_percent="$(( 100 * ${position%:*} / ${length%:*} ))"
 fi
 
 # if [ -n "$progress_display" ]; then
