@@ -1,7 +1,7 @@
 #!/bin/bash
 
 label_separator=" • "
-
+title_max_length=60
 status="$(playerctl status | tr '[:upper:]' '[:lower:]')"
 
 if [ -z "$status" ] || [ "$status" == "stopped" ]; then
@@ -15,7 +15,7 @@ if [ -z "$status" ] || [ "$status" == "stopped" ]; then
 fi
 
 player="$(playerctl metadata --format '{{ playerName }}')"
-title="$(playerctl metadata --format '{{ trunc(title, 40) }}')"
+title="$(playerctl metadata --format "{{ trunc(title, $title_max_length) }}")"
 artist="$(playerctl metadata --format '{{ artist }}')"
 album="$(playerctl metadata --format '{{ album }}')"
 
