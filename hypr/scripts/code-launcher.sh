@@ -5,6 +5,16 @@ if [ -z "$CODE_DIR" ]; then
 	exit 1
 fi
 
+launcher=""
+if command -v cursor &> /dev/null; then
+  launcher="$(which cursor)"
+elif command -v code &> /dev/null; then
+  launcher="$(which code)"
+else
+    echo "Neither cursor nor code is installed. Please install one of them to use this script."
+    exit 1
+fi
+
 dir="$(realpath $CODE_DIR)"
 
 options=$(find $dir -maxdepth 3 -type d -exec test -d '{}/.git' ';' -print)
@@ -17,5 +27,5 @@ if [ -z "$result" ]; then
   exit 1
 fi
 
-uwsm-app -- /usr/bin/code $dir/$result
+uwsm-app -- $launcher $dir/$result
 
