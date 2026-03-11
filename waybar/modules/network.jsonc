@@ -16,6 +16,6 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "uwsm-app -- kitty --class waybar.float impala"
+    "on-click": "uwsm-app -- kitty --class TUI.float impala"
   }
 }
