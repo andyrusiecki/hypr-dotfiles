@@ -27,3 +27,4 @@ python-pywal16
 python-pywalfox
 wallust
 jolt
+matugen-git

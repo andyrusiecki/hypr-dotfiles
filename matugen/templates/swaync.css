@@ -1,0 +1,16 @@
+@define-color foreground {{colors.on_surface.default.hex}};
+@define-color background {{colors.surface.default.hex}};
+
+/* TODO: update swaync vars to not use colors directly */
+@define-color color0  {{colors.surface.default.hex}};
+@define-color color1  {{colors.primary.default.hex}};
+@define-color color2  {{colors.secondary.default.hex}};
+@define-color color3  {{colors.tertiary.default.hex}};
+@define-color color4  {{colors.on_primary.default.hex}};
+@define-color color5  {{colors.on_secondary.default.hex}};
+@define-color color6  {{colors.on_tertiary.default.hex}};
+
+
+* {
+  font-family: "<* include "font-family" *>";
+}
