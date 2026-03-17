@@ -1,19 +1,16 @@
-import Quickshell
-import QtQuick // for Text
+import QtQuick
 import Quickshell.Io
-import Quickshell.Wayland
 
-Text {
+Row {
   id: clock
-  anchors.centerIn: parent
+  spacing: 4
 
   Process {
     id: dateProc
-    command: ["date", "+%a %b %e %H:%M:%S %p"]
+    command: ["date", "+%I:%M:%S %p %Z"]
     running: true
-
     stdout: StdioCollector {
-      onStreamFinished: clock.text = this.text
+      onStreamFinished: timeText.text = this.text.trim()
     }
   }
 
@@ -22,5 +19,17 @@ Text {
     running: true
     repeat: true
     onTriggered: dateProc.running = true
+  }
+
+  Text {
+    id: iconText
+    text: "\ueb53"
+    font.pixelSize: 14
+    font.family: "Symbols Nerd Font Mono"
+  }
+  Text {
+    id: timeText
+    text: "--:--:--"
+    font.pixelSize: 12
   }
 }
