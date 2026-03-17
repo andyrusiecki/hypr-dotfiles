@@ -1,44 +1,45 @@
 [config]
 caching = true
+import_json_files = [
+  'templates/custom.json'
+]
 
 [templates.btop]
 input_path = 'templates/btop.theme'
-# output_path = '~/.config/btop/themes/wallust.theme'
-output_path = 'output/btop.theme'
+output_path = '~/.config/btop/themes/wallust.theme'
+# output_path = 'output/btop.theme'
 
 [templates.dunst]
 input_path = 'templates/dunst.conf'
-# output_path = '~/.config/dunst/dunstrc.d/colors.conf'
-output_path = 'output/dunst.conf'
-
-[templates.font-family]
-input_path = 'templates/font-family.txt'
+output_path = '~/.config/dunst/dunstrc.d/colors.conf'
+# output_path = 'output/dunst.conf'
 
 [templates.gtk3]
 input_path = 'templates/gtk.css'
-output_path = 'output/gtk3.css'
-# output_path = '~/.config/gtk-3.0/colors.css'
-# post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+# output_path = 'output/gtk3.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
 
 [templates.gtk4]
 input_path = 'templates/gtk.css'
-output_path = 'output/gtk4.css'
-# output_path = '~/.config/gtk-4.0/colors.css'
+# output_path = 'output/gtk4.css'
+output_path = '~/.config/gtk-4.0/colors.css'
 
 [templates.helix]
 input_path = 'templates/helix.toml'
-# output_path = '~/.config/helix/themes/matugen.toml'
-output_path = 'output/helix.toml'
+output_path = '~/.config/helix/themes/matugen.toml'
+# output_path = 'output/helix.toml'
 
 [templates.hyprland]
 input_path = 'templates/hyprland.conf'
-# output_path = '~/.config/hypr/colors.conf'
-output_path = 'output/hyprland.conf'
+output_path = '~/.config/hypr/colors.conf'
+# output_path = 'output/hyprland.conf'
 
 [templates.kitty]
 input_path = 'templates/kitty.conf'
-# output_path = '~/.config/kitty/colors.conf'
-output_path = 'output/kitty.conf'
+output_path = '~/.config/kitty/colors.conf'
+# output_path = 'output/kitty.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
 
 [templates.mako]
 input_path = 'templates/mako.ini'
@@ -47,13 +48,13 @@ output_path = 'output/mako.ini'
 
 [templates.obsidian]
 input_path = 'templates/obsidian.css'
-# output_path = '~/.cache/wallust/obsidian.css'
-output_path = 'output/obsidian.css'
+output_path = '~/.cache/wallust/obsidian.css'
+# output_path = 'output/obsidian.css'
 
 [templates.opencode]
 input_path = 'templates/opencode.json'
-# output_path = '~/.config/opencode/themes/matugen.json'
-output_path = 'output/opencode.json'
+output_path = '~/.config/opencode/themes/matugen.json'
+# output_path = 'output/opencode.json'
 
 [templates.quickshell]
 input_path = 'templates/quickshell.qml'
@@ -62,38 +63,49 @@ output_path = 'output/quickshell.qml'
 
 [templates.pywalfox]
 input_path = 'templates/pywalfox.json'
-# output_path = '~/.cache/wal/colors.json'
-output_path = 'output/pywalfox.json'
-# post_hook = 'pywalfox update'
+output_path = '~/.cache/wal/colors.json'
+# output_path = 'output/pywalfox.json'
+post_hook = 'pywalfox update'
 
 [templates.rofi]
 input_path = 'templates/rofi.rasi'
-# output_path = '~/.config/rofi/colors.rasi'
-output_path = 'output/rofi.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+# output_path = 'output/rofi.rasi'
 
 [templates.steam]
 input_path = 'templates/steam.css'
-# output_path = '~/.config/AdwSteamGtk/custom.css'
-output_path = 'output/steam.css'
+output_path = '~/.config/AdwSteamGtk/custom.css'
+# output_path = 'output/steam.css'
 # post_hook =  'adwaita-steam-gtk -i'
 
 [templates.swaync]
 input_path = 'templates/swaync.css'
-# output_path = '~/.config/swaync/colors.css'
-output_path = 'output/swaync.css'
+output_path = '~/.config/swaync/colors.css'
+# output_path = 'output/swaync.css'
+post_hook = 'swaync-client -rs'
 
 [templates.terminal-sequences]
 input_path = 'templates/terminal-sequences'
-output_path = 'output/terminal-sequences'
-# output_path = "~/.cache/terminal-sequences"
+# output_path = 'output/terminal-sequences'
+output_path = "~/.cache/terminal-sequences"
 # post_hook = "cat ~/.cache/terminal-sequences > /dev/pts/[0-9]*" # export the sequences to every running terminal
+
+[templates.wallust-colors]
+input_path = 'templates/wallust-colors'
+output_path = '~/.cache/wallust/colors'
+# output_path = 'output/wallust-colors'
+
+[templates.wallust-colors-json]
+input_path = 'templates/wallust-colors.json'
+output_path = '~/.cache/wallust/colors.json'
+# output_path = 'output/wallust-colors-json'
 
 [templates.waybar]
 input_path = 'templates/waybar.css'
-# output_path = '~/.config/waybar/colors.css'
-output_path = 'output/waybar.css'
+output_path = '~/.config/waybar/colors.css'
+# output_path = 'output/waybar.css'
 
 [templates.yazi]
 input_path = 'templates/yazi.toml'
-# output_path = '~/.config/yazi/theme.toml'
-output_path = 'output/yazi.toml'
+output_path = '~/.config/yazi/theme.toml'
+# output_path = 'output/yazi.toml'

@@ -12,5 +12,5 @@
 
 
 * {
-  font-family: "<* include "font-family" *>";
+  font-family: "{{font}}";
 }
