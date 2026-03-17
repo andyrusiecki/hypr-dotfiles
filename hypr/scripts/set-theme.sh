@@ -44,8 +44,10 @@ theme_options=""
 selected=-1
 count=0
 
-custom_option="custom-dark\0display\x1fGenerate Color Scheme from Wallpaper (Dark)\n"
-custom_option="${custom_option}custom-light\0display\x1fGenerate Color Scheme from Wallpaper (Light)\n"
+custom_option="wallust-dark\0display\x1fWallust Color Scheme (Dark)\n"
+custom_option="${custom_option}wallust-light\0display\x1fWallust Color Scheme (Light)\n"
+custom_option="${custom_option}matugen-dark\0display\x1fMatugen Color Scheme (Dark)\n"
+custom_option="${custom_option}matugen-light\0display\x1fMatugen Color Scheme (Light)\n"
 
 while read -r line; do
   # ignore header
@@ -68,7 +70,7 @@ while read -r line; do
 
   if [[ "$option" == "$current_theme" ]]; then
     display="$display (current theme)"
-    selected=$count+1
+    selected=$count+3
   fi
 
   theme_options+="$option\0display\x1f$display\n"
@@ -93,38 +95,55 @@ if [[ "$wallpaper" != "$current_wallpaper" ]]; then
 fi
 
 wallust_prefix="wallust -d $DOTFILES_DIR/wallust"
+matugen_prefix="matugen -c $DOTFILES_DIR/matugen/config.toml"
 
-if [[ "$colorscheme" == "custom-dark" ]]; then
-  echo "Generating dark color scheme from wallpaper."
-  $wallust_prefix run --palette dark16 "$wallpaper_path"
-elif [[ "$colorscheme" == "custom-light" ]]; then
-  echo "Generating light color scheme from wallpaper."
-  $wallust_prefix run --palette light16 --saturation 80 "$wallpaper_path"
-else
-  echo "Selected theme: $colorscheme"
-  $wallust_prefix theme $colorscheme
-fi
+function post_wallust() {
+  # kitty
+  #pkill -SIGUSR1 kitty
 
-# reload/restart apps for new theme
+  # chrome
+  $DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
 
-# kitty
-#pkill -SIGUSR1 kitty
+  # dunst
+  if pgrep dunst >/dev/null; then
+    dunstctl reload
+  fi
 
-# chrome
-$DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
+  # swaync
+  if pgrep swaync >/dev/null; then
+    swaync-client -rs
+  fi
 
-# dunst
-if pgrep dunst >/dev/null; then
-  dunstctl reload
-fi
+  # firefox
+  pywalfox update
 
-# swaync
-if pgrep swaync >/dev/null; then
-  swaync-client -rs
-fi
+  # obsidian
+  $DOTFILES_DIR/wallust/scripts/set-theme-obsidian.sh
+}
 
-# firefox
-pywalfox update
+case "$colorscheme" in
+  "wallust-dark")
+    echo "Generating dark color scheme from wallpaper."
+    $wallust_prefix run --palette dark16 "$wallpaper_path"
+    post_wallust
+    ;;
+  "wallust-light")
+    echo "Generating light color scheme from wallpaper."
+    $wallust_prefix run --palette light16 --saturation 80 "$wallpaper_path"
+    post_wallust
+    ;;
+  "matugen-dark")
+    echo "Generating dark color scheme from wallpaper."
+    $matugen_prefix --mode dark image "$wallpaper_path"
+    ;;
+  "matugen-light")
+    echo "Generating light color scheme from wallpaper."
+    $matugen_prefix --mode light image "$wallpaper_path"
+    ;;
+  *)
+    echo "Selected theme: $colorscheme"
+    $wallust_prefix theme $colorscheme
+    post_wallust
+    ;;
+esac
 
-# obsidian
-$DOTFILES_DIR/wallust/scripts/set-theme-obsidian.sh
