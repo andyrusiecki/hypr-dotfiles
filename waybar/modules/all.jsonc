@@ -4,6 +4,7 @@
     "$DOTFILES_DIR/waybar/modules/bluetooth.jsonc",
     "$DOTFILES_DIR/waybar/modules/clock.jsonc",
     "$DOTFILES_DIR/waybar/modules/cpu.jsonc",
+    "$DOTFILES_DIR/waybar/modules/hyprland-windowcount.jsonc",
     "$DOTFILES_DIR/waybar/modules/hyprland-workspaces.jsonc",
     "$DOTFILES_DIR/waybar/modules/idle-inhibitor.jsonc",
     "$DOTFILES_DIR/waybar/modules/image-album-art.jsonc",

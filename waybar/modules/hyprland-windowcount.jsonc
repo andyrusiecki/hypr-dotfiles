@@ -1,0 +1,10 @@
+{
+  "hyprland/windowcount": {
+    "format": "{}",
+    "format-empty": " ",
+    "format-windowed": " ",
+    "format-fullscreen": "",
+    "separate-outputs": true,
+    "on-click": "hyprctl dispatch fullscreen 1"
+  }
+}

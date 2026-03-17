@@ -1,6 +1,6 @@
 {
   "clock": {
-    "format": " {:%I:%M:%S %p}",
+    "format": " {:%I:%M:%S %p %Z}",
     "interval": 1,
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -15,6 +15,16 @@
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
+    },
+    "timezones": [
+      "",
+      "America/Chicago",
+      "Europe/Dublin",
+      "UTC"
+    ],
+    "actions": {
+      "on-click": "tz_up",
+      "on-click-right": "tz_down"
     }
   }
 }
