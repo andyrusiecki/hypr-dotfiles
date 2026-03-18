@@ -44,7 +44,7 @@ Item {
     anchors.centerIn: parent
     text: root.text
     font.pixelSize: 14
-    font.family: "Symbols Nerd Font Mono"
+    font.family: "Adwaita Nerd Font Mono"
   }
 
   MouseArea {

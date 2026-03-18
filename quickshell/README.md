@@ -24,4 +24,4 @@ Point quickshell at the status bar entry:
 quickshell run /path/to/dotfiles/quickshell/status-bar/shell.qml
 ```
 
-Requires [Quickshell](https://github.com/Quickshell/quickshell) with Hyprland and Wayland support. Font: **Symbols Nerd Font Mono** for icons.
+Requires [Quickshell](https://github.com/Quickshell/quickshell) with Hyprland and Wayland support. Font: **Adwaita Nerd Font Mono** for icons.

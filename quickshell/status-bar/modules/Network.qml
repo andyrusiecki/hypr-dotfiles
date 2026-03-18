@@ -34,7 +34,7 @@ Item {
     anchors.centerIn: parent
     text: root.connected ? "\uf0ac" : "\uf06a"
     font.pixelSize: 14
-    font.family: "Symbols Nerd Font Mono"
+    font.family: "Adwaita Nerd Font Mono"
   }
 
   MouseArea {

@@ -74,7 +74,7 @@ Item {
     Text {
       text: root.icon
       font.pixelSize: 20
-      font.family: "Symbols Nerd Font Mono"
+      font.family: "Adwaita Nerd Font Mono"
       anchors.verticalCenter: parent.verticalCenter
     }
     Column {

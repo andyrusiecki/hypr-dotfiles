@@ -49,7 +49,7 @@ Item {
       id: batText
       text: root.icon
       font.pixelSize: 14
-      font.family: "Symbols Nerd Font Mono"
+      font.family: "Adwaita Nerd Font Mono"
     }
   }
 

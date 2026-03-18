@@ -33,9 +33,9 @@ Item {
     anchors.centerIn: parent
     spacing: 4
     Text {
-      text: "\uf0ad"
+      text: ""
       font.pixelSize: 14
-      font.family: "Symbols Nerd Font Mono"
+      font.family: "Adwaita Nerd Font Mono"
     }
     Text {
       id: updatesText

@@ -23,9 +23,9 @@ Row {
 
   Text {
     id: iconText
-    text: "\ueb53"
+    text: "\uf017"
     font.pixelSize: 14
-    font.family: "Symbols Nerd Font Mono"
+    font.family: "Adwaita Nerd Font Mono"
   }
   Text {
     id: timeText

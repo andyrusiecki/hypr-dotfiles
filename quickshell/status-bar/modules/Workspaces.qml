@@ -7,9 +7,9 @@ Row {
   property var monitor: null
 
   // Icons match waybar format-icons (Nerd Font): 1=term, 2=code, 3=music, 4=doc, 5=chat, 6=game, 7=media
-  property var wsIcons: ["\ue62e", "\ue70c", "\uf001", "\ue799", "\uf086", "\ue21c", "\ue648"]
+  property var wsIcons: ["", "", "󰅱", "󰠮", "", "󰐌", "󰊗"]
   Repeater {
-    model: 6
+    model: 7
     delegate: Item {
       id: wsDelegate
       width: 24
@@ -22,7 +22,7 @@ Row {
         anchors.centerIn: parent
         text: root.wsIcons[index] || String(wsNum)
         font.pixelSize: 15
-        font.family: "Symbols Nerd Font Mono"
+        font.family: "Adwaita Nerd Font Mono"
         opacity: wsDelegate.active || wsDelegate.focused ? 1.0 : 0.5
       }
 
