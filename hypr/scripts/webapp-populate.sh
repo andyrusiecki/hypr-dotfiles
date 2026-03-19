@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Populate default webapps
+# Remove existing webapps
+$DOTFILES_DIR/hypr/scripts/webapp-remove.sh YouTube
+$DOTFILES_DIR/hypr/scripts/webapp-remove.sh Zoom
 
+# Populate default webapps
 # YouTube
 $DOTFILES_DIR/hypr/scripts/webapp-create.sh --icon youtube  YouTube "https://www.youtube.com"
 
