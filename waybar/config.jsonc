@@ -17,8 +17,9 @@
 
   // Modules Center
   "modules-center": [
+    //"image#album-art",
+    // "group/now-playing",
     "custom/media"
-    // "group/media"
     // "mpris"
   ],
 
@@ -33,6 +34,7 @@
     "network",
     "custom/swaync",
     "battery",
+    //"custom/auto-cpufreq",
     "clock"
   ],
 
@@ -50,7 +52,7 @@
       //"custom/tailscale",
       "cpu",
       "memory",
-      "power-profiles-daemon",
+      //"power-profiles-daemon",
       "custom/exit"
     ]
   }

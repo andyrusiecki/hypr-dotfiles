@@ -17,17 +17,20 @@
     "$DOTFILES_DIR/waybar/modules/tray.jsonc",
     "$DOTFILES_DIR/waybar/modules/wireplumber.jsonc",
 
+    "$DOTFILES_DIR/waybar/modules/custom-auto-cpufreq.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-dunst.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-exit.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-expand.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-hypridle.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-media.jsonc",
+    "$DOTFILES_DIR/waybar/modules/now-playing.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-screen-recording.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-swaync.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-tailscale.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-updates.jsonc",
 
-    "$DOTFILES_DIR/waybar/modules/experimental/media.jsonc",
+    "$DOTFILES_DIR/waybar/modules/debug/group-palette.jsonc",
+
     "$DOTFILES_DIR/waybar/modules/experimental/weather.jsonc"
   ]
 }

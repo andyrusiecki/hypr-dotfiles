@@ -1,0 +1,15 @@
+{
+  "custom/auto-cpufreq": {
+    "format": "{icon}",
+    "tooltip": false,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "powersave": ""
+    },
+    "exec": "$DOTFILES_DIR/waybar/scripts/auto-cpufreq-status.sh",
+    "return-type": "json",
+    "interval": 1
+  }
+}

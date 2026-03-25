@@ -1,0 +1,105 @@
+{
+  "group/now-playing": {
+    "name": "now-playing",
+    "orientation": "vertical",
+    "modules": [
+      "group/now-playing-row",
+      "custom/now-playing-progress"
+    ]
+  },
+  "group/now-playing-row": {
+    "orientation": "horizontal",
+    "modules": [
+      //"image#album-art",
+      "custom/now-playing-player",
+      "group/now-playing-track"
+      // "custom/now-playing-time"
+    ]
+  },
+  "group/now-playing-track": {
+    "orientation": "vertical",
+    "modules": [
+      "custom/now-playing-title",
+      "custom/now-playing-artist"
+    ]
+  },
+  "custom/now-playing-progress": {
+    "exec": "$DOTFILES_DIR/waybar/scripts/media-progress-bar.sh",
+    "return-type": "json",
+    "format": "{text}",
+    "interval": 1,
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
+    "signal": 4,
+    "tooltip": false,
+    "min-length": 24,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+  },
+  "custom/now-playing-player": {
+    "exec": "$DOTFILES_DIR/waybar/scripts/now-playing-status.sh player",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "default": " ",
+      "chrome": "󰊯 ",
+      "chromium": "󰊯 ",
+      "firefox": " ",
+      "spotify": " ",
+      "twitch": " ",
+      "youtube": " "
+    },
+    "interval": 0,
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
+    "signal": 4,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+  },
+  "custom/now-playing-title": {
+    "exec": "$DOTFILES_DIR/waybar/scripts/now-playing-status.sh title",
+    "return-type": "json",
+    "format": "{text}",
+    "tooltip": true,
+    "escape": true,
+    "interval": 0,
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
+    "signal": 4,
+    "justify": "left",
+    "align": 0,
+    "max-length": 60,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+  },
+  "custom/now-playing-artist": {
+    "exec": "$DOTFILES_DIR/waybar/scripts/now-playing-status.sh artist",
+    "return-type": "json",
+    "format": "{text}",
+    "escape": true,
+    "interval": 0,
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
+    "signal": 4,
+    "justify": "left",
+    "align": 0,
+    "max-length": 60,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+  },
+  // Optional: add to group/now-playing-row — "custom/now-playing-time"
+  "custom/now-playing-time": {
+    "exec": "$DOTFILES_DIR/waybar/scripts/playerctl-status.sh time",
+    "interval": 1,
+    "signal": 4,
+    "exec-if": "status=$(playerctl status 2>/dev/null); [ \"$status\" != \"Stopped\" ] && [ -n \"$status\" ]",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "$DOTFILES_DIR/waybar/scripts/media-focus.sh",
+    "on-scroll-up": "playerctld unshift; pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "playerctld shift; pkill -SIGRTMIN+4 waybar"
+  }
+}
