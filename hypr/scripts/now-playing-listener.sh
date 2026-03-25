@@ -21,15 +21,54 @@ write_status() {
 
     local local_art_path="$($DOTFILES_DIR/waybar/scripts/media-art.sh)"
 
+    local send_notification=false
+
+    # override player based on url
+    if [[ -n "$url" ]]; then
+      case $url in
+        *"spotify.com"*)
+          player="spotify"
+          ;;
+        *"youtube.com"*)
+          player="youtube"
+          ;;
+        *"twitch.tv"*)
+          player="twitch"
+          ;;
+      esac
+    fi
+
+    case $player in
+      "spotify")
+        send_notification=true
+        # check for empty artist (occurs with podcasts)
+        if [ -z "$artist" ] && [ -n "$album" ]; then
+          artist="$album"
+          album=""
+        fi
+        ;;
+    esac
+
     # only send notifications for music players
-    if [[ "$player" == "spotify" ]]; then
+    if [[ "$send_notification" == true ]]; then
+      local msg=""
+      if [ -n "$artist" ]; then
+        msg="$artist"
+
+        if [ -n "$album" ]; then
+          msg+=" - $album"
+        fi
+      elif [ -n "$album" ]; then
+        msg="$album"
+      fi
+
       notify-send \
         -a 'now-playing' \
         -h string:private-synchronous:now-playing \
         -h boolean:SWAYNC_BYPASS_DND:true \
         -t 3000 \
         -i "$local_art_path" \
-        "$title" "$artist - $album"
+        "$title" "$msg"
     fi
 
     jq -cn \
