@@ -18,12 +18,16 @@ function clearMediaArt() {
 # fi
 
 player="$(playerctl metadata --format '{{ playerName }}')"
-
-album_art="$(playerctl --player="$player" metadata mpris:artUrl 2>/dev/null)"
+album_art=""
 art_type="artUrl"
 
+# only use art url if not browser player
+if [[ "$player" != "google-chrome" && "$player" != "chromium" && "$player" != "firefox" ]]; then
+  album_art="$(playerctl --player="$player" metadata -f '{{mpris:artUrl}}' 2>/dev/null)"
+fi
+
 if [[ -z $album_art ]]; then
-  album_art="$(playerctl --player="$player" metadata xesam:url 2>/dev/null)"
+  album_art="$(playerctl --player="$player" metadata -f '{{xesam:url}}' 2>/dev/null)"
   art_type="url"
 fi
 
@@ -63,7 +67,12 @@ if [[ $album_art == http* ]]; then
   fi
 
   # need to scrape page for art
-  new_album_art="$(curl -s "$album_art" | grep -oP 'meta property="og:image" content="(.*?)"' | sed -E 's/.*content="(.*?)".*/\1/')"
+  content="$(curl -s "$album_art")"
+  new_album_art="$(echo "$content" | grep -oP 'meta property="og:image" content="(.*?)"' | sed -E 's/.*content="(.*?)".*/\1/')"
+
+  if [[ -z $new_album_art ]]; then
+    new_album_art="$(echo "$content" | grep -oP 'link rel="icon" href="(.*?)"' | sed -E 's/.*href="(.*?)".*/\1/')"
+  fi
 
   if [[ -z $new_album_art ]]; then
     # no art to grab

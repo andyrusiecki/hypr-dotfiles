@@ -3,31 +3,37 @@
 set -u
 
 OUT_JSON="/tmp/now-playing.json"
+playerctl_call="playerctl --ignore-player=chromium"
 
 write_status() {
-  local tmp="$(mktemp "${TMPDIR:-/tmp}/now-playing.XXXXXX.json")"
+  local tmp="$(mktemp "/tmp/now-playing.XXXXXX.json")"
   if ! playerctl status &>/dev/null; then
     jq -cn '{title:"",artist:"",album:"",artUrl:"",url:""}' >"$tmp" || {
       rm -f -- "$tmp"
       return 1
     }
   else
-    local title="$(playerctl metadata title 2>/dev/null || true)"
-    local artist="$(playerctl metadata artist 2>/dev/null || true)"
-    local album="$(playerctl metadata album 2>/dev/null || true)"
-    local artUrl="$(playerctl metadata mpris:artUrl 2>/dev/null || true)"
-    local url="$(playerctl metadata xesam:url 2>/dev/null || true)"
+    local title="$(playerctl metadata -f '{{title}}' 2>/dev/null || true)"
+    local artist="$(playerctl metadata -f '{{artist}}' 2>/dev/null || true)"
+    local album="$(playerctl metadata -f '{{album}}' 2>/dev/null || true)"
+    local artUrl="$(playerctl metadata -f '{{mpris:artUrl}}' 2>/dev/null || true)"
+    local url="$(playerctl metadata -f '{{xesam:url}}' 2>/dev/null || true)"
     local player="$(playerctl metadata -f '{{ playerName }}' 2>/dev/null || true)"
 
     local local_art_path="$($DOTFILES_DIR/waybar/scripts/media-art.sh)"
 
     local send_notification=false
 
-    # override player based on url
-    if [[ -n "$url" ]]; then
+    # override player based on for browser media players
+    if [[ "$player" == "google-chrome" || "$player" == "chromium" || "$player" == "firefox" ]] && [[ -n "$url" ]]; then
       case $url in
         *"spotify.com"*)
           player="spotify"
+
+          # split title to get true title and artist
+          local title_parts=(${title// • / })
+          title="${title_parts[0]}"
+          artist="${title_parts[1]}"
           ;;
         *"youtube.com"*)
           player="youtube"
@@ -49,8 +55,10 @@ write_status() {
         ;;
     esac
 
-    # only send notifications for music players
-    if [[ "$send_notification" == true ]]; then
+    # only send notifications for music players (only if currently playing)
+    status="$(playerctl status 2>/dev/null | tr '[:upper:]' '[:lower:]')"
+
+    if [[ "$status" == "playing" ]] && [[ "$send_notification" == true ]]; then
       local msg=""
       if [ -n "$artist" ]; then
         msg="$artist"

@@ -1,8 +1,9 @@
 #!/bin/bash
 
+playerctl_call="playerctl --ignore-player=chromium"
 label_separator=" • "
 title_max_length=60
-status="$(playerctl status | tr '[:upper:]' '[:lower:]')"
+status="$($playerctl_call status | tr '[:upper:]' '[:lower:]')"
 
 if [ -z "$status" ] || [ "$status" == "stopped" ]; then
   # no player active
@@ -14,29 +15,52 @@ if [ -z "$status" ] || [ "$status" == "stopped" ]; then
   exit 0
 fi
 
-player="$(playerctl metadata --format '{{ playerName }}')"
-title="$(playerctl metadata --format "{{ trunc(title, $title_max_length) }}")"
-artist="$(playerctl metadata --format '{{ artist }}')"
-album="$(playerctl metadata --format '{{ album }}')"
+function truncate() {
+  local text="$1"
+  local max_length="$2"
+  if [[ ${#text} -gt $max_length ]]; then
+    echo "${text:0:$max_length}..."
+  else
+    echo "$text"
+  fi
+}
 
-position=$(playerctl metadata --format '{{ position }}')
-position_display="$(playerctl metadata --format '{{ duration(position) }}')"
-length=$(playerctl metadata --format '{{ mpris:length }}')
-length_display="$(playerctl metadata --format '{{ duration(mpris:length) }}')"
+player="$($playerctl_call metadata -f '{{ playerName }}')"
+title="$($playerctl_call metadata -f '{{title}}')"
+artist="$($playerctl_call metadata -f '{{artist}}')"
+album="$($playerctl_call metadata -f '{{album}}')"
 
-url="$(playerctl metadata --format '{{ xesam:url }}')"
-album_art="$(playerctl metadata --format '{{ mpris:artUrl }}')"
+position=$($playerctl_call metadata -f '{{ position }}')
+position_display="$($playerctl_call metadata -f '{{ duration(position) }}')"
+length=$($playerctl_call metadata -f '{{ mpris:length }}')
+length_display="$($playerctl_call metadata -f '{{ duration(mpris:length) }}')"
+
+url="$($playerctl_call metadata -f '{{xesam:url}}')"
+album_art="$($playerctl_call metadata -f '{{mpris:artUrl}}')"
 
 # player - custom options
-if [ -n "$url" ]; then
-  if [[ "$url" == *"youtube.com"* ]]; then
-    player="youtube"
-  elif [[ "$url" == *"spotify.com"* ]]; then
-    player="spotify"
-  elif [[ "$url" == *"twitch.tv"* ]]; then
-    player="twitch"
-  fi
+if [[ "$player" == "google-chrome" || "$player" == "chromium" || "$player" == "firefox" ]] && [[ -n "$url" ]]; then
+  case $url in
+    *"spotify.com"*)
+      player="spotify"
+
+      # Spotify Web often puts "Title • Artist" in the title field; split on first separator only
+      label_separator=" • "
+      if [[ "$title" == *"$label_separator"* ]]; then
+        artist="${title#*"$label_separator"}"
+        title="${title%%"$label_separator"*}"
+      fi
+      ;;
+    *"youtube.com"*)
+      player="youtube"
+      ;;
+    *"twitch.tv"*)
+      player="twitch"
+      ;;
+  esac
 fi
+
+title="$(truncate "$title" $title_max_length)"
 
 # text output
 text="$title"
