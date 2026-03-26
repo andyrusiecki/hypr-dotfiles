@@ -25,10 +25,11 @@
 
   // Modules Right
   "modules-right": [
-    "group/expand",
+    // "group/expand",
     "privacy",
     "custom/screen-recording",
     "custom/updates",
+    "tray",
     "wireplumber",
     "bluetooth",
     "network",
@@ -47,13 +48,13 @@
     },
     "modules": [
       "custom/expand",
-      "tray",
+      // "tray",
       "idle_inhibitor",
       //"custom/tailscale",
       "cpu",
-      "memory",
-      //"power-profiles-daemon",
-      "custom/exit"
+      "memory"
+      // "power-profiles-daemon",
+      // "custom/exit"
     ]
   }
 }
