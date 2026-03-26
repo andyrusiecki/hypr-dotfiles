@@ -1,0 +1,7 @@
+{
+  "custom/debug-hyprland-window": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "hyprctl activewindow -j | jq -r '\"title=\" + .title + \"|class=\" + .class + \"|size=\" + (.size[0] | tostring) + \"x\" + (.size[1] | tostring) + \"|at=\" + (.at[0] | tostring) + \"x\" + (.at[1] | tostring)'"
+  }
+}

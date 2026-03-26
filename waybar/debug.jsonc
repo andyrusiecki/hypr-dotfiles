@@ -1,0 +1,27 @@
+{
+  "include": [
+    "$DOTFILES_DIR/waybar/modules/all.jsonc"
+  ],
+
+  // General Settings
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "bottom",
+  "spacing": 0,
+  "height": 30,
+
+  // Modules Left
+  "modules-left": [
+    "custom/debug-hyprland-window"
+  ],
+
+  // Modules Center
+  "modules-center": [
+
+  ],
+
+  // Modules Right
+  "modules-right": [
+    "group/palette"
+  ]
+}

@@ -2,7 +2,7 @@
   "wireplumber": {
     "scroll-step": 1,
     "format": "{icon}",
-    "on-click": "uwsm-app -- kitty --class TUI.float wiremix --tab output",
+    "on-click": "uwsm-app -- kitty --class TUI.sidebar wiremix --tab output",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+ && $DOTFILES_DIR/hypr/scripts/notify-audio-output.sh",
     "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%- && $DOTFILES_DIR/hypr/scripts/notify-audio-output.sh",
     "tooltip-format": "Output:\t{node_name}\t{volume}%\nInput:\t{source_desc}\t{source_volume}%",

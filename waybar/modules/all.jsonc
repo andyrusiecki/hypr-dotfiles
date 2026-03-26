@@ -29,8 +29,10 @@
     "$DOTFILES_DIR/waybar/modules/custom-tailscale.jsonc",
     "$DOTFILES_DIR/waybar/modules/custom-updates.jsonc",
 
+    "$DOTFILES_DIR/waybar/modules/debug/hyprland-window.jsonc",
     "$DOTFILES_DIR/waybar/modules/debug/group-palette.jsonc",
 
+    "$DOTFILES_DIR/waybar/modules/experimental/media.jsonc",
     "$DOTFILES_DIR/waybar/modules/experimental/weather.jsonc"
   ]
 }
