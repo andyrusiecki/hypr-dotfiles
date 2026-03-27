@@ -4,6 +4,7 @@ weather_json=$(mktemp)
 curl -s "https://wttr.in/?format=j1" -o "$weather_json"
 sunrise=$(jq -r -c '.weather[0].astronomy[0].sunrise' $weather_json)
 sunset=$(jq -r -c '.weather[0].astronomy[0].sunset' $weather_json)
+default_times=false
 
 rm $weather_json
 
@@ -11,6 +12,7 @@ if ([ -z "$sunrise" ] || [ "$sunrise" == "null" ]) || ([ -z "$sunset" ] || [ "$s
   echo "Error: Unable to fetch sunrise/sunset times."
   echo "Using default times of 7:00 AM and 7:00 PM"
 
+  default_times=true
   sunrise="07:00"
   sunset="19:00"
 fi
@@ -25,6 +27,11 @@ nighttime_temp=4000
 config_file="$HOME/.config/hypr/hyprsunset.conf"
 
 echo "Generating hyprsunset config file at $config_file"
+
+if $default_times; then
+  echo "WARNING: Unable to fetch sunrise/sunset times. Using default times."
+else
+
 echo "- Sunrise: $sunrise"
 echo "- Sunset: $sunset"
 echo "- Daytime Temp: $daytime_temp K"
@@ -60,7 +67,13 @@ profile {\n\
 }\n"
 done
 
-config_content+="# Hyprsunset auto-generated config file\n\n$daytime_config\n$nighttime_config"
+config_content+="# Hyprsunset auto-generated config file\n"
+
+if $default_times; then
+ config_content+="# WARNING: Unable to fetch sunrise/sunset times. Using default times.\n"
+fi
+
+config_content+="\n$daytime_config\n$nighttime_config"
 
 if [ -f $config_file ]; then
   rm $config_file
