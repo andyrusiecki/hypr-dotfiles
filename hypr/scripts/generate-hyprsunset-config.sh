@@ -7,10 +7,12 @@ sunset=$(jq -r -c '.weather[0].astronomy[0].sunset' $weather_json)
 
 rm $weather_json
 
-if [ -z "$sunrise" ] || [ -z "$sunset" ]; then
+if ([ -z "$sunrise" ] || [ "$sunrise" == "null" ]) || ([ -z "$sunset" ] || [ "$sunset" == "null" ]); then
   echo "Error: Unable to fetch sunrise/sunset times."
-  echo "Using existing configuration if available."
-  exit 0
+  echo "Using default times of 7:00 AM and 7:00 PM"
+
+  sunrise="07:00"
+  sunset="19:00"
 fi
 
 transition_time_min=60
