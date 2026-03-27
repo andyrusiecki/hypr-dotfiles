@@ -32,8 +32,25 @@ case $selected in
   ;;
 esac
 
-notify-send -t $notify_timeout "$msg in $notify_timeout_seconds seconds..."
-sleep $notify_timeout_seconds
+remaining=$notify_timeout_seconds
+while [ "$remaining" -gt 0 ]; do
+  if [ "$remaining" -eq 1 ]; then
+    unit=second
+    timeout=1000
+  else
+    unit=seconds
+    timeout=2000
+  fi
+
+  notify-send -t $timeout \
+    -a 'powermenu-notif' \
+    -h string:private-synchronous:powermenu-notif \
+    -h boolean:SWAYNC_BYPASS_DND:true \
+    "$msg in $remaining $unit..."
+
+  sleep 1
+  remaining=$((remaining - 1))
+done
 
 if [ -n "$cmd" ]; then
   $cmd
