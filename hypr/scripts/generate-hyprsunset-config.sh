@@ -30,7 +30,7 @@ echo "Generating hyprsunset config file at $config_file"
 
 if $default_times; then
   echo "WARNING: Unable to fetch sunrise/sunset times. Using default times."
-else
+fi
 
 echo "- Sunrise: $sunrise"
 echo "- Sunset: $sunset"
