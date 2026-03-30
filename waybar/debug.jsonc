@@ -22,6 +22,7 @@
 
   // Modules Right
   "modules-right": [
+    "custom/hyprsunset",
     "group/palette"
   ]
 }

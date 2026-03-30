@@ -1,0 +1,9 @@
+{
+  "custom/hyprsunset": {
+    "name": "hyprsunset",
+    "interval": 10,
+    "format": "{}",
+    "exec-if": "pgrep hyprsunset",
+    "exec": "$DOTFILES_DIR/waybar/scripts/hyprsunset-status.sh"
+  }
+}
