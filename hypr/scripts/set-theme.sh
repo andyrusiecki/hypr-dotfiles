@@ -99,7 +99,7 @@ matugen_prefix="matugen -c $DOTFILES_DIR/matugen/config.toml"
 
 function post_wallust() {
   # kitty
-  #pkill -SIGUSR1 kitty
+  pkill -SIGUSR1 kitty
 
   # chrome
   $DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
@@ -121,15 +121,58 @@ function post_wallust() {
   $DOTFILES_DIR/wallust/scripts/set-theme-obsidian.sh
 }
 
+function set_dark_mode() {
+  echo "Setting dark mode."
+  gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+}
+
+function set_light_mode() {
+  echo "Setting light mode."
+  gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
+}
+
+# Relative luminance of sRGB hex (WCAG): #RRGGBB or RRGGBB → prints 0.0–1.0 to stdout.
+function luminance() {
+  local h="${1#\#}"
+  if [[ ! "$h" =~ ^[0-9a-fA-F]{6}$ ]]; then
+    return 0
+  fi
+  local r=$((0x${h:0:2})) g=$((0x${h:2:2})) b=$((0x${h:4:2}))
+  awk -v r="$r" -v g="$g" -v b="$b" '
+    function lin(c) {
+      v = c / 255
+      return (v <= 0.04045) ? (v / 12.92) : ((v + 0.055) / 1.055) ^ 2.4
+    }
+    BEGIN {
+      printf "%f\n", 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+    }
+  '
+}
+
+function is_wallust_dark_mode() {
+  local foreground="$(jq -r '.special.foreground' ~/.cache/wallust/colors.json)"
+  local background="$(jq -r '.special.background' ~/.cache/wallust/colors.json)"
+  local luminance_foreground="$(luminance "$foreground")"
+  local luminance_background="$(luminance "$background")"
+
+  if [ "$(echo "$luminance_foreground < $luminance_background" | bc -l)" -eq 1 ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 case "$colorscheme" in
   "wallust-dark")
     echo "Generating dark color scheme from wallpaper."
-    $wallust_prefix run --palette dark16 "$wallpaper_path"
+    $wallust_prefix run --palette harddark16 "$wallpaper_path"
+    set_dark_mode
     post_wallust
     ;;
   "wallust-light")
     echo "Generating light color scheme from wallpaper."
     $wallust_prefix run --palette light16 --saturation 80 "$wallpaper_path"
+    set_light_mode
     post_wallust
     ;;
   "matugen-dark")
@@ -143,6 +186,13 @@ case "$colorscheme" in
   *)
     echo "Selected theme: $colorscheme"
     $wallust_prefix theme $colorscheme
+
+    if is_wallust_dark_mode; then
+      set_dark_mode
+    else
+      set_light_mode
+    fi
+
     post_wallust
     ;;
 esac

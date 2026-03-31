@@ -70,7 +70,6 @@ elif [ -n "$album" ]; then
   text+="$label_separator$album"
 fi
 
-# youtube.com keeps the position running even while paused, this can be fixed with an extension: https://github.com/LurkAndLoiter/youtube-mpris-fix
 progress_display=""
 progress_percent=""
 
@@ -101,7 +100,9 @@ if [ -n "$progress_display" ]; then
 fi
 
 class="[\"status-$status\""
-if [ -n "$progress_percent" ]; then
+
+# youtube doesn't properly report current position when paused, so we don't show the progress bar
+if [[ "$player" != "youtube" ]] && [ -n "$progress_percent" ]; then
   class+=",\"progress-$progress_percent\""
 fi
 class+="]"
