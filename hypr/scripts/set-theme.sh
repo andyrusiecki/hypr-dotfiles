@@ -28,7 +28,7 @@ for wallpaper in $(/usr/bin/ls $wallpaper_dir); do
   ((count++))
 done
 
-wallpaper="$(echo -ne "$wallpaper_options" | rofi -config $DOTFILES_DIR/rofi/wallpaper.rasi -dmenu -p "Select Wallpaper" -show-icons -selected-row $selected)"
+wallpaper="$(echo -ne "$wallpaper_options" | rofi -i -config $DOTFILES_DIR/rofi/wallpaper.rasi -dmenu -p "Select Wallpaper" -show-icons -selected-row $selected)"
 
 if [ -z "$wallpaper" ]; then
   echo "No Wallpaper selected, exiting."
@@ -79,7 +79,7 @@ done < <(wallust theme list)
 
 ((selected++))
 
-colorscheme="$(echo -ne "${custom_option}${theme_options}" | rofi -config $DOTFILES_DIR/rofi/config.rasi -dmenu -p "Select Theme" -show-icons -selected-row $selected)"
+colorscheme="$(echo -ne "${custom_option}${theme_options}" | rofi -i -config $DOTFILES_DIR/rofi/config.rasi -dmenu -p "Select Theme" -show-icons -selected-row $selected)"
 
 if [ -z "$colorscheme" ]; then
   echo "No Color Scheme selected, exiting."

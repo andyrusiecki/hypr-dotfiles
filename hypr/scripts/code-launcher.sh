@@ -20,7 +20,7 @@ dir="$(realpath $CODE_DIR)"
 options=$(find $dir -maxdepth 3 -type d -exec test -d '{}/.git' ';' -print)
 options="${options//$dir\//}"
 
-result=$(echo -ne "$options" | rofi -config $DOTFILES_DIR/rofi/config.rasi -dmenu -p "Select Respository")
+result=$(echo -ne "$options" | rofi -i -config $DOTFILES_DIR/rofi/config.rasi -dmenu -p "Select Respository")
 
 if [ -z "$result" ]; then
   echo "No Repository selected, exiting."
