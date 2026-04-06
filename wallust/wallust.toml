@@ -67,6 +67,10 @@ target = '~/.cache/wallust/colors.sh'
 template = 'dunst.conf'
 target = '~/.config/dunst/dunstrc.d/colors.conf'
 
+[templates.ghostty]
+template = 'ghostty'
+target = '~/.config/ghostty/colors.ghostty'
+
 [templates.gtk3]
 template = 'gtk3.css'
 target = '~/.config/gtk-3.0/colors.css'

@@ -101,6 +101,17 @@ function post_wallust() {
   # kitty
   pkill -SIGUSR1 kitty
 
+  # ghostty
+  pkill -SIGUSR2 ghostty
+
+  # gtk
+  gsettings set org.gnome.desktop.interface gtk-theme ""
+  if is_wallust_dark_mode; then
+    gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
+  else
+    gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-light
+  fi
+
   # chrome
   $DOTFILES_DIR/hypr/scripts/set-theme-chrome.sh
 
