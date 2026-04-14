@@ -5,14 +5,13 @@ if [ -z "$CODE_DIR" ]; then
 	exit 1
 fi
 
+cmd="code"
 launcher=""
-if command -v cursor &> /dev/null; then
-  launcher="$(which cursor)"
-elif command -v code &> /dev/null; then
-  launcher="$(which code)"
+if command -v $cmd &> /dev/null; then
+  launcher="$(which $cmd)"
 else
-    echo "Neither cursor nor code is installed. Please install one of them to use this script."
-    exit 1
+  echo "ide launcher command '$cmd' is not installed. Please install $cmd to use this script."
+  exit 1
 fi
 
 dir="$(realpath $CODE_DIR)"
